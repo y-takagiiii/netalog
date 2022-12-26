@@ -2,13 +2,13 @@
 erDiagram
   Users ||--o{ Posts : ""
   Posts ||--o{ Taggings : ""
-  Taggings }o--|| Tags : ""
+  PostTags }o--|| Tags : ""
   Posts ||--|| Videos : ""
   Posts ||--o{ LaughLogs : ""
   Users ||--o{ Favorites : ""
   Posts ||--o{ Favorites : ""
   Users ||--o{ Inquiries : ""
-  Inquiries ||--|{ InquiryItems : ""
+  Inquiries }|--|| InquiryItems : ""
   Users ||--o{ FollowRelationships : ""
   Users ||--o| ActiveStorageAttachments : ""
   ActiveStorageAttachments ||--|| ActiveStorageBlobs : ""
@@ -56,7 +56,7 @@ erDiagram
   LaughLogs {
     id integer PK
     post_id integer FK
-    laugh_time integer
+    button_pressed_time integer
     created_at datetime
     updated_at datetime
   }
@@ -68,7 +68,7 @@ erDiagram
     updated_at datetime
   }
 
-  Taggings {
+  PostTags {
     id integer PK
     post_id integer FK
     tag_id integer FK
@@ -115,6 +115,7 @@ erDiagram
 
   AdminNotifications {
     id integer PK
+    user_id integer FK
     title string
     content text
     created_at datetime
