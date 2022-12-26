@@ -46,3 +46,6 @@
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# github template
+.github/*
