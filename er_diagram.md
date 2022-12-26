@@ -1,7 +1,7 @@
 ```mermaid
 erDiagram
   Users ||--o{ Posts : ""
-  Posts ||--o{ Taggings : ""
+  Posts ||--o{ PostTags : ""
   PostTags }o--|| Tags : ""
   Posts ||--|| Videos : ""
   Posts ||--o{ LaughLogs : ""
@@ -12,6 +12,7 @@ erDiagram
   Users ||--o{ FollowRelationships : ""
   Users ||--o| ActiveStorageAttachments : ""
   ActiveStorageAttachments ||--|| ActiveStorageBlobs : ""
+  Users ||--o{ AdminNotifications : ""
 
   Users {
     id integer PK
