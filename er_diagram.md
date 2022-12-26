@@ -10,6 +10,8 @@ erDiagram
   Users ||--o{ Inquiries : ""
   Inquiries ||--|{ InquiryItems : ""
   Users ||--o{ FollowRelationships : ""
+  Users ||--o| ActiveStorageAttachments : ""
+  ActiveStorageAttachments ||--|| ActiveStorageBlobs : ""
 
   Users {
     id integer PK
@@ -72,6 +74,27 @@ erDiagram
     tag_id integer FK
     created_at datetime
     updated_at datetime
+  }
+
+  ActiveStorageBlobs {
+    id integer PK
+    key string
+    filename string
+    content_type string
+    metadata text
+    service_name string
+    byte_size bigint
+    checksum string
+    created_at datetime
+  }
+
+  ActiveStorageAttachments {
+    id integer PK
+    name string
+    record_type string
+    record_id bigint
+    blob_id bigint FK
+    created_at datetime
   }
 
   Favorites {
