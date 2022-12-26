@@ -47,11 +47,14 @@ erDiagram
     description text
     thumbnail string
     view_count integer
+    created_at datetime
+    updated_at datetime
   }
 
   LaughLogs {
     id integer PK
     post_id integer FK
+    laugh_time integer
     created_at datetime
     updated_at datetime
   }
@@ -67,24 +70,32 @@ erDiagram
     id integer PK
     post_id integer FK
     tag_id integer FK
+    created_at datetime
+    updated_at datetime
   }
 
   Favorites {
     id integer PK
     user_id integer FK
     post_id integer FK
+    created_at datetime
+    updated_at datetime
   }
 
   FollowRelationships {
     id integer PK
     follower_id integer FK
     followed_id integer FK
+    created_at datetime
+    updated_at datetime
   }
 
   AdminNotifications {
     id integer PK
     title string
     content text
+    created_at datetime
+    updated_at datetime
   }
 
   Inquiries {
@@ -92,11 +103,14 @@ erDiagram
     user_id integer FK
     inquiry_item_id integer FK
     content text
+    created_at datetime
+    updated_at datetime
   }
 
   InquiryItems {
     id integer PK
     name string
+    created_at datetime
+    updated_at datetime
   }
-
 ```
