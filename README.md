@@ -51,8 +51,152 @@ Youtubeで漫才・コントの動画をよく見る人
 ## ■ なぜこのサービスを作りたいのか？
 笑いのツボは人それぞれであるため、「再生数が多い動画 = 自分が面白いと思う動画」であるとは限らない。どんな人がどの動画を見て、いつ笑っているのか知りたいと思った。
 
-## 画面遷移図
+## ■ 画面遷移図
 [figma](https://www.figma.com/file/aE882ms6OxT3FvQ2xKmBh1/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0%3A1&t=F9nUidzvuwr0iywU-1)
+
+## ■ ER図
+```mermaid
+erDiagram
+  Users ||--o{ Posts : ""
+  Posts ||--o{ PostTags : ""
+  PostTags }o--|| Tags : ""
+  Posts ||--|| Videos : ""
+  Posts ||--o{ LaughLogs : ""
+  Users ||--o{ Favorites : ""
+  Posts ||--o{ Favorites : ""
+  Users ||--o{ Inquiries : ""
+  Inquiries }|--|| InquiryItems : ""
+  Users ||--o{ FollowRelationships : ""
+  Users ||--o| ActiveStorageAttachments : ""
+  ActiveStorageAttachments ||--|| ActiveStorageBlobs : ""
+  Users ||--o{ AdminNotifications : ""
+
+  Users {
+    id integer PK
+    name string
+    email string
+    encrypted_password string
+    reset_password_token datetime
+    reset_password_sent_at datetime
+    remember_created_at datetime
+    sign_in_count integer
+    current_sign_in_at datetime
+    last_sign_in_at datetime
+    current_sign_in_ip string
+    last_sign_in_ip string
+    role integer
+    uid string
+    provider string
+    title integer
+    created_at datetime
+    updated_at datetime
+  }
+
+  Posts {
+    id integer PK
+    user_id integer FK
+    video_id integer FK
+    created_at datetime
+    updated_at datetime
+  }
+
+  Videos {
+    id integer PK
+    youtube_id string
+    title string
+    description text
+    thumbnail string
+    view_count integer
+    created_at datetime
+    updated_at datetime
+  }
+
+  LaughLogs {
+    id integer PK
+    post_id integer FK
+    button_pressed_time integer
+    created_at datetime
+    updated_at datetime
+  }
+
+  Tags {
+    id integer PK
+    name string
+    created_at datetime
+    updated_at datetime
+  }
+
+  PostTags {
+    id integer PK
+    post_id integer FK
+    tag_id integer FK
+    created_at datetime
+    updated_at datetime
+  }
+
+  ActiveStorageBlobs {
+    id integer PK
+    key string
+    filename string
+    content_type string
+    metadata text
+    service_name string
+    byte_size bigint
+    checksum string
+    created_at datetime
+  }
+
+  ActiveStorageAttachments {
+    id integer PK
+    name string
+    record_type string
+    record_id bigint
+    blob_id bigint FK
+    created_at datetime
+  }
+
+  Favorites {
+    id integer PK
+    user_id integer FK
+    post_id integer FK
+    created_at datetime
+    updated_at datetime
+  }
+
+  FollowRelationships {
+    id integer PK
+    follower_id integer FK
+    followed_id integer FK
+    created_at datetime
+    updated_at datetime
+  }
+
+  AdminNotifications {
+    id integer PK
+    user_id integer FK
+    title string
+    content text
+    created_at datetime
+    updated_at datetime
+  }
+
+  Inquiries {
+    id integer PK
+    user_id integer FK
+    inquiry_item_id integer FK
+    content text
+    created_at datetime
+    updated_at datetime
+  }
+
+  InquiryItems {
+    id integer PK
+    name string
+    created_at datetime
+    updated_at datetime
+  }
+```
+
 ## ■ スケジュール
 企画〜技術調査：12/20~12/24〆切
 
