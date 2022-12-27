@@ -3,29 +3,29 @@
 <%= form_with model: @user do |f| %>
   <div>
     <%= f.label :name, style: "display: block" %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, autofocus: true, class: "input input-bordered w-full max-w-xs" %>
   </div>
 
   <div>
     <%= f.label :email, style: "display: block" %>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, class: "input input-bordered w-full max-w-xs" %>
   </div>
 
   <div>
     <%= f.label :password, style: "display: block" %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, class: "input input-bordered w-full max-w-xs" %>
   </div>
 
   <div>
     <%= f.label :password_confirmation, style: "display: block" %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: "input input-bordered w-full max-w-xs" %>
   </div>
 
   <div>
-    <%= f.submit "登録" %>
+    <%= f.submit "登録", class: "btn btn-secondary"%>
   </div>
 <% end %>
 
 <div>
-  <%= link_to "アカウントお持ちの方はこちら", login_path %>
+  <%= link_to "アカウントお持ちの方はこちら", login_path, class: "link" %>
 </div>
