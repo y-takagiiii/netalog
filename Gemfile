@@ -51,9 +51,19 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem 'rails-i18n', '~> 7.0', '>= 7.0.6'
+gem 'enum_help', '~> 0.0.19'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
+  gem 'bullet', '~> 7.0', '>= 7.0.4'
+  gem 'rubocop', '~> 1.41', '>= 1.41.1'
+  gem 'rubocop-rails', '~> 2.17', '>= 2.17.4'
+  gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
+  gem 'factory_bot_rails', '~> 6.2'
+  gem 'faker', '~> 3.1'
 end
 
 group :development do
@@ -64,6 +74,14 @@ group :development do
   # gem "rack-mini-profiler"
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+  gem "spring"
+
+  gem 'annotate', '~> 3.2'
+  gem 'better_errors', '~> 2.9', '>= 2.9.1'
+  gem 'binding_of_caller', '~> 1.0'
 end
 
+group :test do
+  gem 'capybara', '~> 3.38'
+  gem 'simplecov', '~> 0.22.0'
+end
