@@ -62,8 +62,10 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
   gem 'bullet', '~> 7.0', '>= 7.0.4'
-  gem 'rubocop', '~> 1.41', '>= 1.41.1'
-  gem 'rubocop-rails', '~> 2.17', '>= 2.17.4'
+  gem 'rubocop', '~> 1.41', '>= 1.41.1', require: false
+  gem 'rubocop-rails', '~> 2.17', '>= 2.17.4', require: false
+  gem 'rubocop-rspec', '~> 2.16', require: false
+  gem 'rubocop-performance', '~> 1.15', '>= 1.15.2', require: false
   gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 3.1'
