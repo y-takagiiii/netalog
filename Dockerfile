@@ -24,6 +24,11 @@ RUN curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 && apt-get update -qq \
 && apt-get install -y build-essential nodejs yarn
 
+RUN gem install bundler:$BUNDLER_VERSION
+COPY Gemfile /$APP_NAME/Gemfile
+COPY Gemfile.lock /$APP_NAME/Gemfile.lock
+RUN bundle install
+
 COPY yarn.lock /$APP_NAME/yarn.lock
 COPY package.json /$APP_NAME/package.json
 
