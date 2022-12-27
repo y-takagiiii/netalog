@@ -1,0 +1,21 @@
+<h1>ログイン</h1>
+
+<%= form_with url: login_path do |f| %>
+  <div>
+    <%= f.label :email, style: "display: block" %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :password, style: "display: block" %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div>
+    <%= f.submit "ログイン" %>
+  </div>
+<% end %>
+
+<div>
+  <%= link_to "アカウントお持ちでない方はこちら", new_user_path %>
+</div>
