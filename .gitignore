@@ -41,3 +41,6 @@
 
 # github template
 .github/*
+
+# simplecov
+coverage/*

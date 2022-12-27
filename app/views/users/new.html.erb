@@ -1,0 +1,31 @@
+<h1>ユーザー登録</h1>
+
+<%= form_with model: @user do |f| %>
+  <div>
+    <%= f.label :name, style: "display: block" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :email, style: "display: block" %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :password, style: "display: block" %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div>
+    <%= f.label :password_confirmation, style: "display: block" %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div>
+    <%= f.submit "登録" %>
+  </div>
+<% end %>
+
+<div>
+  <%= link_to "アカウントお持ちの方はこちら", login_path %>
+</div>
