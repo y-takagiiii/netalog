@@ -18,5 +18,14 @@
 require 'rails_helper'
 
 RSpec.describe Post do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "user_idがあれば有効であること" do
+    post = build(:post)
+    expect(post).to be_valid
+  end
+
+  it "user_idがなければ無効であること" do
+    post = build(:post, user_id: nil)
+    post.valid?
+    expect(post.errors[:user]).to include("を入力してください")
+  end
 end
