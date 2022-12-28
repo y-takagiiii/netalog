@@ -6,7 +6,7 @@ class UserSessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password])
     if @user
-      redirect_back_or_to posts_path, notice: "ログインしました"
+      redirect_back_or_to posts_path, notice: t('.success')
     else
       render :new, status: :unprocessable_entity
     end
@@ -20,11 +20,11 @@ class UserSessionsController < ApplicationController
       password_confirmation: 'password'
     )
     auto_login(@guest_user)
-    redirect_back_or_to posts_path, notice: 'ゲストとしてログインしました'
+    redirect_back_or_to posts_path, notice: t('.success')
   end
 
   def destroy
     logout
-    redirect_to root_path, notice: "ログアウトしました"
+    redirect_to root_path, notice: t('.success')
   end
 end
