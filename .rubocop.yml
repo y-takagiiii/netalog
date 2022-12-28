@@ -13,3 +13,7 @@ Rails/FilePath:
 
 Style/Documentation:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'lib/tasks/auto_annotate_models.rake'
