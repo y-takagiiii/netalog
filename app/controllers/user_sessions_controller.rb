@@ -6,8 +6,9 @@ class UserSessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password])
     if @user
-      redirect_back_or_to posts_path, notice: t('.success')
+      redirect_back_or_to posts_path, success: t('.success')
     else
+      flash.now[:error] = t('.fail')
       render :new, status: :unprocessable_entity
     end
   end
@@ -20,11 +21,11 @@ class UserSessionsController < ApplicationController
       password_confirmation: 'password'
     )
     auto_login(@guest_user)
-    redirect_back_or_to posts_path, notice: t('.success')
+    redirect_back_or_to posts_path, success: t('.success')
   end
 
   def destroy
     logout
-    redirect_to root_path, notice: t('.success')
+    redirect_to root_path, success: t('.success')
   end
 end

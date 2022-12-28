@@ -13,7 +13,7 @@ ja:
   user_sessions:
     create:
       success: ログインしました
-      fails: ログインできませんでした
+      fail: ログインできませんでした
     destroy:
       success: ログアウトしました
     guest_login:

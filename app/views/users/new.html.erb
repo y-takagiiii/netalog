@@ -1,6 +1,7 @@
 <h1>ユーザー登録</h1>
 
 <%= form_with model: @user do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
   <div>
     <%= f.label :name, User.human_attribute_name(:name), style: "display: block" %>
     <%= f.text_field :name, autofocus: true, class: "input input-bordered w-full max-w-xs" %>
