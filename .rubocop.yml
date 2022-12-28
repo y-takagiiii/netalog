@@ -10,3 +10,10 @@ AllCops:
 
 Rails/FilePath:
   Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'lib/tasks/auto_annotate_models.rake'
