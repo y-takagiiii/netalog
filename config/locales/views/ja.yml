@@ -1,0 +1,20 @@
+ja:
+  defaults:
+    login: ログイン
+    guest_login: ゲストログイン
+    logout: ログアウト
+    have_account: アカウントをお持ちの方
+    have_no_account: アカウントをお持ちでない方
+    register: 登録
+  users:
+    create:
+      success: ユーザー登録が完了しました
+      fail: ユーザー登録に失敗しました
+  user_sessions:
+    create:
+      success: ログインしました
+      fails: ログインできませんでした
+    destroy:
+      success: ログアウトしました
+    guest_login:
+      success: ゲストとしてログインしました

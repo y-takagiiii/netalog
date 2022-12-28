@@ -2,20 +2,20 @@
 
 <%= form_with url: login_path do |f| %>
   <div>
-    <%= f.label :email, style: "display: block" %>
+    <%= f.label :email, User.human_attribute_name(:email), style: "display: block" %>
     <%= f.text_field :email, autofocus: true, class: "input input-bordered w-full max-w-xs" %>
   </div>
 
   <div>
-    <%= f.label :password, style: "display: block" %>
+    <%= f.label :password, User.human_attribute_name(:password), style: "display: block" %>
     <%= f.password_field :password, class: "input input-bordered w-full max-w-xs" %>
   </div>
 
   <div>
-    <%= f.submit "ログイン", class: "btn btn-secondary"%>
+    <%= f.submit (t 'defaults.login'), class: "btn btn-secondary"%>
   </div>
 <% end %>
 
 <div>
-  <%= link_to "アカウントお持ちでない方はこちら", new_user_path, class: "link" %>
+  <%= link_to (t 'defaults.have_no_account'), new_user_path, class: "link" %>
 </div>

@@ -3,7 +3,7 @@
 <p><%= current_user.name %>さん</p>
 
 <div>
-  <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } %>
+  <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete } %>
 </div>
 
 <p>投稿一覧</p>
