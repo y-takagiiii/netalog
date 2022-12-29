@@ -12,7 +12,7 @@
 #  youtube_id  :string
 #
 class Video < ApplicationRecord
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   with_options presence: true do
     validates :youtube_id
