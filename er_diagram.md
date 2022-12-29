@@ -3,8 +3,8 @@ erDiagram
   Users ||--o{ Posts : ""
   Posts ||--o{ PostTags : ""
   PostTags }o--|| Tags : ""
-  Posts ||--|| Videos : ""
-  Posts ||--o{ LaughLogs : ""
+  Posts }|--|| Videos : ""
+  Posts ||--|| LaughLogs : ""
   Users ||--o{ Favorites : ""
   Posts ||--o{ Favorites : ""
   Users ||--o{ Inquiries : ""
@@ -18,18 +18,9 @@ erDiagram
     id integer PK
     name string
     email string
-    encrypted_password string
-    reset_password_token datetime
-    reset_password_sent_at datetime
-    remember_created_at datetime
-    sign_in_count integer
-    current_sign_in_at datetime
-    last_sign_in_at datetime
-    current_sign_in_ip string
-    last_sign_in_ip string
+    crypted_password string
+    salt string
     role integer
-    uid string
-    provider string
     title integer
     created_at datetime
     updated_at datetime
