@@ -17,6 +17,7 @@ class Video < ApplicationRecord
   with_options presence: true do
     validates :youtube_id
     validates :title
+    validates :description
     validates :thumbnail
     validates :view_count
   end
