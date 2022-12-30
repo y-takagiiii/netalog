@@ -40,7 +40,7 @@
 /node_modules
 
 # github template
-.github/*
+/.github/*
 
 # simplecov
-coverage/*
+/coverage/*
