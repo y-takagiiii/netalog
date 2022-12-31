@@ -1,2 +1,11 @@
 <h1>Searches#search</h1>
 <p>Find me in app/views/searches/search.html.erb</p>
+<div>
+  <%= link_to '投稿一覧へ', posts_path %>
+</div>
+<div>
+  <%= form_with url: search_result_path, method: :get do |f| %>
+    <%= f.text_field :query %>
+    <%= f.submit '検索' %>
+  <% end %>
+</div>
