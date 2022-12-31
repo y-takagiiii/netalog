@@ -1,0 +1,7 @@
+<h1>Searches#result</h1>
+<p>Find me in app/views/searches/result.html.erb</p>
+
+<% @search_result_videos.items.each do |search_result_video| %>
+  <p><%= search_result_video.snippet.title %></p>
+  <p><%= image_tag search_result_video.snippet.thumbnails.high.url %></p>
+<% end %>

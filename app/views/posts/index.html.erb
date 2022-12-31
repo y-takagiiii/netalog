@@ -6,12 +6,19 @@
   <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete } %>
 </div>
 
+<div>
+  <%= link_to '検索画面へ', search_path %>
+</div>
+
 <h1>投稿一覧</h1>
 <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 place-items-center mx-3">
+
   <% @posts.each do |post| %>
     <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1">
       <p>投稿者 <%= post.user.name %></p>
-      <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" class="w-fit" /></figure>
+      <figure>
+        <%= image_tag @video_result.items[rand(0..4)].snippet.thumbnails.high.url, class: "w-fit" %>
+      </figure>
       <div class="card-body">
         <h2 class="card-title">
           Shoes!

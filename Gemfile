@@ -54,13 +54,15 @@ gem "bootsnap", require: false
 # authentication
 gem 'sorcery', '~> 0.16.4'
 
+# youtube data api
+gem 'google-api-client', '~> 0.53.0'
+
 gem 'rails-i18n', '~> 7.0', '>= 7.0.6'
 gem 'enum_help', '~> 0.0.19'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
   gem 'bullet', '~> 7.0', '>= 7.0.4'
   gem 'rubocop', '~> 1.41', '>= 1.41.1', require: false
   gem 'rubocop-rails', '~> 2.17', '>= 2.17.4', require: false
