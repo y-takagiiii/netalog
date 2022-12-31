@@ -1,7 +1,5 @@
 class SearchesController < ApplicationController
-
-  def search
-  end
+  def search; end
 
   def result
     require 'google/apis/youtube_v3'
