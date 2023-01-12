@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get 'search_result', to: 'searches#result'
   resources :users, only: %i[new create destroy]
   resources :posts, only: %i[index]
+  resources :laugh_logs, only: %i[new create]
 end
