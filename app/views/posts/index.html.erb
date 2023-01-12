@@ -17,11 +17,11 @@
     <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1">
       <p>投稿者 <%= post.user.name %></p>
       <figure>
-        <%= image_tag @video_result.items[rand(0..4)].snippet.thumbnails.high.url, class: "w-fit" %>
+        <%= image_tag post.video.thumbnail, class: "w-fit" %>
       </figure>
       <div class="card-body">
         <h2 class="card-title">
-          Shoes!
+          <%= post.video.title %>
           <div class="badge badge-secondary">NEW</div>
         </h2>
         <p>If a dog chews shoes whose shoes does he choose?</p>

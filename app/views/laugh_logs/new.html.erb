@@ -1,0 +1,53 @@
+
+<h1>LaughLogs#new</h1>
+<p>Find me in app/views/laugh_logs/new.html.erb</p>
+
+<div>
+  <div id="player"></div>
+  <span><%= @video.title %></span>
+  <div data-controller="laugh-log">
+    <button data-action="click->laugh-log#click">テスト</button>
+    <div data-action="click->laugh-log#element_get">
+      <button data-laugh-log-target="get">要素を取得</button>
+    </div>
+  </div>
+</div>
+
+<input type="button" id="laugh-button" value="笑">
+<form action="/laugh_logs" method="post">
+  <input type="hidden" id="laugh-log-time" name="laugh_log_time">
+  <input type="submit" name="commit" value="ログを作成">
+</form>
+
+<script>
+  // IFrame Player API の読み込みタグを挿入
+  const tag = document.createElement('script')
+  tag.src = "https://www.youtube.com/iframe_api"
+  const firstScriptTag = document.getElementsByTagName('script')[0]
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+
+  // 関数onYouTubeIframeAPIReadyでiframeとYoutubeプレイヤーを作成
+  let player
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      videoId: '<%= @video.youtube_id %>',
+      height: '720',
+      width: '1280',
+      playerVars: {
+        // list: ,
+        rel: 0,
+        fs: 0,
+        modestbranding: 1
+      },
+    })
+  }
+
+  // 動画の操作
+  const laughButton = document.getElementById('laugh-button')
+  let buttonPressedTime = []
+
+  laughButton.addEventListener('click',() => {
+    buttonPressedTime.push(player.getCurrentTime())
+    document.getElementById("laugh-log-time").value = buttonPressedTime
+  })
+</script>

@@ -4,4 +4,5 @@
 <% @search_result_videos.items.each do |search_result_video| %>
   <p><%= search_result_video.snippet.title %></p>
   <p><%= image_tag search_result_video.snippet.thumbnails.high.url %></p>
+  <p><%= link_to 'ログを作る', new_laugh_log_path  %></p>
 <% end %>
