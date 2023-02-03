@@ -58,10 +58,11 @@ Youtubeで漫才・コントの動画をよく見る人
 ```mermaid
 erDiagram
   Users ||--o{ Posts : ""
+  Users ||--o{ Authentications : ""
   Posts ||--o{ PostTags : ""
   PostTags }o--|| Tags : ""
   Posts }|--|| Videos : ""
-  Posts ||--|| LaughLogs : ""
+	Posts ||--|{ LaughLogs : ""
   Users ||--o{ Favorites : ""
   Posts ||--o{ Favorites : ""
   Users ||--o{ Inquiries : ""
@@ -83,10 +84,17 @@ erDiagram
     updated_at datetime
   }
 
+  Authentications {
+    id integer PK
+    provider string
+    uid integer
+  }
+
   Posts {
     id integer PK
     user_id integer FK
     video_id integer FK
+    button_pressed_time integer
     created_at datetime
     updated_at datetime
   }
