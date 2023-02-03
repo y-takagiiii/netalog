@@ -30,7 +30,7 @@ module YoutubeApi::SearchVideo
       snippet = item.snippet
       thumbnail = snippet.thumbnails.high.url
 
-      @search_result_videos << { video_id: video_id, title: snippet.title, description: snippet.description, thumbnail: thumbnail, view_count: view_count  }
+      @search_result_videos << { video_id:, title: snippet.title, description: snippet.description, thumbnail:, view_count: }
     end
   end
 end
