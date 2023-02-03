@@ -1,8 +1,9 @@
 <h1>Searches#result</h1>
 <p>Find me in app/views/searches/result.html.erb</p>
 
-<% @search_result_videos.items.each do |search_result_video| %>
-  <p><%= search_result_video.snippet.title %></p>
-  <p><%= image_tag search_result_video.snippet.thumbnails.high.url %></p>
+<% @search_result_videos.each do |search_result_video| %>
+  <p><%= image_tag search_result_video[:thumbnail] %></p>
+  <p><%= search_result_video[:title] %></p>
+  <p><%= search_result_video[:view_count] %></p>
   <p><%= link_to 'ログを作る', new_laugh_log_path  %></p>
 <% end %>
