@@ -1,10 +1,10 @@
 module YoutubeApi::SaveVideo
   require 'google/apis/youtube_v3'
 
-  # 検索結果を保存するメソッド
-  def save_video(search_results)
+  def save_video!(search_results, keyword)
     search_results.each do |result|
       Video.create!(
+        search_word: keyword,
         youtube_id: result[:video_id],
         title: result[:title],
         description: result[:description],

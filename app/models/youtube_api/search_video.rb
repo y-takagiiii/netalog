@@ -1,7 +1,6 @@
 module YoutubeApi::SearchVideo
   require 'google/apis/youtube_v3'
 
-  # 検索結果を取得するメソッド
   def search_video(keyword)
     youtube = Google::Apis::YoutubeV3::YouTubeService.new
     youtube.key = Rails.application.credentials.google[:api_key]
@@ -11,13 +10,13 @@ module YoutubeApi::SearchVideo
       q: keyword,
       type: 'video',
       region_code: 'JP',
+      relevance_language: 'ja',
       order: :relevance,
       max_results: 10
     }
 
     search_result_videos = youtube.list_searches(:snippet, **options)
 
-    # list_searchesメソッドだけでは再生回数を取得できないため、list_videosメソッドを使用
     search_result_videos.items.each_with_index do |item, index|
       video_id = search_result_videos.items[index].id.video_id
       video_results = youtube.list_videos(

@@ -39,6 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_31_034139) do
   end
 
   create_table "videos", force: :cascade do |t|
+    t.string "search_word"
     t.string "youtube_id"
     t.string "title"
     t.text "description"
