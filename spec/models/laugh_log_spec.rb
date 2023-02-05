@@ -3,7 +3,7 @@
 # Table name: laugh_logs
 #
 #  id                  :integer          not null, primary key
-#  button_pressed_time :integer
+#  button_pressed_time :float
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  post_id             :integer          not null
