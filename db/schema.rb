@@ -13,7 +13,7 @@
 ActiveRecord::Schema[7.0].define(version: 2022_12_31_034139) do
   create_table "laugh_logs", force: :cascade do |t|
     t.integer "post_id", null: false
-    t.integer "button_pressed_time"
+    t.float "button_pressed_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_laugh_logs_on_post_id"

@@ -61,12 +61,11 @@ RSpec.describe Video do
   end
 
   describe "instance method" do
-    it "recently?メソッドがtrueを返すこと" do
+    it "recently?メソッドが新しいvideoインスタンスに対してtrueを返すこと" do
       expect(video.recently?).to be_truthy
     end
 
-    it "recently?メソッドがfalseを返すこと" do
-      binding.b
+    it "recently?メソッドが古いvideoインスタンスに対してfalseを返すこと" do
       expect(old_video.recently?).to be_falsey
     end
   end

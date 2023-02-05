@@ -3,7 +3,7 @@
 # Table name: laugh_logs
 #
 #  id                  :integer          not null, primary key
-#  button_pressed_time :integer
+#  button_pressed_time :float
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  post_id             :integer          not null
@@ -19,6 +19,6 @@
 FactoryBot.define do
   factory :laugh_log do
     association :post
-    button_pressed_time { 1 }
+    button_pressed_time { 1.11111 }
   end
 end
