@@ -36,4 +36,10 @@ RSpec.describe LaughLog do
     laugh_log.valid?
     expect(laugh_log.errors[:button_pressed_time]).to include("を入力してください")
   end
+
+  fit 'button_pressed_timeは整数または浮動小数点数であること' do
+    laugh_log.button_pressed_time = 'テキスト'
+    laugh_log.valid?
+    expect(laugh_log.errors[:button_pressed_time]).to include("は無効な値です")
+  end
 end
