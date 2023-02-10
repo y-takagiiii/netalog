@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   get 'laugh_logs/new/:id', to: 'laugh_logs#new', as: 'new_laugh_log'
   post 'laugh_logs', to: 'laugh_logs#create'
   resources :users, only: %i[new create destroy]
-  resources :posts, only: %i[index show ]
+  resources :posts, only: %i[index show destroy]
 end
