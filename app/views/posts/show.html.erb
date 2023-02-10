@@ -1,0 +1,40 @@
+<h1>投稿詳細</h1>
+
+<div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1">
+  <p>投稿者 <%= @post.user.name %></p>
+  <figure>
+    <%= image_tag @post.video.thumbnail, class: "w-fit" %>
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">
+      <%= @post.video.title %>
+      <div class="badge badge-secondary">NEW</div>
+    </h2>
+    <p><%= @post.video.description %></p>
+    <div class="card-actions justify-end">
+      <div class="badge badge-outline">Fashion</div>
+      <div class="badge badge-outline">Products</div>
+    </div>
+    <% if current_user.own?(@post) %>
+      <div class="card-actions justify-end">
+        <div class="badge badge-outline">編集</div>
+        <div class="badge badge-outline">削除</div>
+      </div>
+    <% else %>
+      <div class="card-actions justify-end">
+        <%= link_to '動画を見る', new_laugh_log_path(@post.video.id), class: "badge badge-outline" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1">
+  <div class="card-body">
+    <div class="card-title">
+      <h2>ログ</h2>
+    </div>
+    <% @post.laugh_logs.each do |laugh_log| %>
+      <div><p><%= laugh_log.button_pressed_time %></p></div>
+    <% end %>
+  </div>
+</div>
