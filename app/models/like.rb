@@ -10,8 +10,9 @@
 #
 # Indexes
 #
-#  index_likes_on_post_id  (post_id)
-#  index_likes_on_user_id  (user_id)
+#  index_likes_on_post_id              (post_id)
+#  index_likes_on_user_id              (user_id)
+#  index_likes_on_user_id_and_post_id  (user_id,post_id) UNIQUE
 #
 # Foreign Keys
 #
@@ -21,4 +22,6 @@
 class Like < ApplicationRecord
   belongs_to :user
   belongs_to :post
+
+  validates :user_id, uniqueness: { scope: :post_id }
 end
