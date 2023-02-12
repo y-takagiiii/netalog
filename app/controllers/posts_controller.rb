@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_post, only: %i[show destroy]
 
   def index
-    @posts = Post.includes([:user, :video, :laugh_logs]).order(id: :desc)
+    @pagy, @posts = pagy(Post.includes([:user, :video, :laugh_logs]).order(id: :desc))
   end
 
   def show; end
