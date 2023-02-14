@@ -28,6 +28,5 @@
 <% end %>
 
 <div>
-  <%= link_to (t 'defaults.have_account'), login_path, class: "link" %>
   <%= link_to (t 'defaults.guest_login'), guest_login_path, data: { turbo_method: :post }, class: "link" %>
 </div>
