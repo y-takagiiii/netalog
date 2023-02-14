@@ -3,8 +3,7 @@ ja:
     login: ログイン
     guest_login: ゲストログイン
     logout: ログアウト
-    have_account: アカウントをお持ちの方
-    have_no_account: アカウントをお持ちでない方
+    sign_up: 新規登録
     register: 登録
   users:
     create:

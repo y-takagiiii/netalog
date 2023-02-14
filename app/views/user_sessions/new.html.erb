@@ -1,21 +1,22 @@
-<h1>ログイン</h1>
+<div class="grid grid-cols-1">
+  <%= form_with url: login_path do |f| %>
+    <div>
+      <%= f.label :email, User.human_attribute_name(:email), style: "display: block" %>
+      <%= f.text_field :email, autofocus: true, class: "input input-bordered w-full max-w-xs" %>
+    </div>
 
-<%= form_with url: login_path do |f| %>
+    <div>
+      <%= f.label :password, User.human_attribute_name(:password), style: "display: block" %>
+      <%= f.password_field :password, class: "input input-bordered w-full max-w-xs" %>
+    </div>
+
+    <div>
+      <%= f.submit (t 'defaults.login'), class: "btn btn-secondary"%>
+    </div>
+  <% end %>
+
   <div>
-    <%= f.label :email, User.human_attribute_name(:email), style: "display: block" %>
-    <%= f.text_field :email, autofocus: true, class: "input input-bordered w-full max-w-xs" %>
+    <%= link_to (t 'defaults.sign_up'), new_user_path, class: "link" %>
+    <%= link_to (t 'defaults.guest_login'), guest_login_path, data: { turbo_method: :post }, class: "link" %>
   </div>
-
-  <div>
-    <%= f.label :password, User.human_attribute_name(:password), style: "display: block" %>
-    <%= f.password_field :password, class: "input input-bordered w-full max-w-xs" %>
-  </div>
-
-  <div>
-    <%= f.submit (t 'defaults.login'), class: "btn btn-secondary"%>
-  </div>
-<% end %>
-
-<div>
-  <%= link_to (t 'defaults.have_no_account'), new_user_path, class: "link" %>
 </div>
