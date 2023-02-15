@@ -3,7 +3,7 @@
 <p><%= link_to '戻る', search_path %></p>
 
 <% @searched_videos.each do |searched_video| %>
-  <p><%= link_to image_tag(searched_video[:thumbnail]), new_laugh_log_path(searched_video) %></p>
+  <p><%= link_to image_tag(searched_video[:thumbnail]), new_laugh_log_path(searched_video), data: { turbo: false } %></p>
   <p><%= searched_video[:title] %></p>
   <p>再生回数 <%= searched_video[:view_count] %></p>
 <% end %>

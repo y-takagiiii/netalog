@@ -22,7 +22,7 @@
       </div>
     <% else %>
       <div class="card-actions justify-end">
-        <%= link_to '動画を見る', new_laugh_log_path(@post.video.id), class: "badge badge-outline" %>
+        <%= link_to '動画を見る', new_laugh_log_path(@post.video.id), data: { turbo: false }, class: "badge badge-outline" %>
       </div>
     <% end %>
   </div>
