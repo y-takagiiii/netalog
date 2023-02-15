@@ -33,8 +33,6 @@
     <div class="card-title">
       <h2>ログ</h2>
     </div>
-    <% @post.laugh_logs.each do |laugh_log| %>
-      <div><p><%= laugh_log.button_pressed_time %></p></div>
-    <% end %>
+    <%= line_chart @post.laugh_logs.group(:button_pressed_time).count %>
   </div>
 </div>
