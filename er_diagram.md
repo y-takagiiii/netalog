@@ -6,8 +6,11 @@ erDiagram
   PostTags }o--|| Tags : ""
   Posts }|--|| Videos : ""
 	Posts ||--|{ LaughLogs : ""
-  Users ||--o{ Favorites : ""
-  Posts ||--o{ Favorites : ""
+  Users ||--o{ Likes : ""
+  Posts ||--o{ Likes : ""
+  Users ||--o{ Bookmarks : ""
+  Bookmarks }o--|| BookmarkPosts : ""
+  Posts ||--o{ BookmarkPosts : ""
   Users ||--o{ Inquiries : ""
   Inquiries }|--|| InquiryItems : ""
   Users ||--o{ FollowRelationships : ""
@@ -97,7 +100,23 @@ erDiagram
     created_at datetime
   }
 
-  Favorites {
+  Bookmarks {
+    id integer PK
+    user_id integer FK
+    name string
+    created_at datetime
+    updated_at datetime
+  }
+
+  BookmarkPosts {
+    id integer PK
+    bookmarks_id integer FK
+    post_id integer FK
+    created_at datetime
+    updated_at datetime
+  }
+
+  Likes {
     id integer PK
     user_id integer FK
     post_id integer FK

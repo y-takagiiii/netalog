@@ -17,19 +17,39 @@
     <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1">
       <p>投稿者 <%= post.user.name %></p>
       <figure>
-        <%= image_tag post.video.thumbnail, class: "w-fit" %>
+        <%= link_to image_tag(post.video.thumbnail, class: "w-fit"), post_path(post) %>
+        <%#= image_tag post.video.thumbnail, class: "w-fit" %>
       </figure>
       <div class="card-body">
         <h2 class="card-title">
           <%= post.video.title %>
           <div class="badge badge-secondary">NEW</div>
         </h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
         <div class="card-actions justify-end">
-          <div class="badge badge-outline">Fashion</div>
-          <div class="badge badge-outline">Products</div>
+          <div class="badge badge-outline">タグ1</div>
+          <div class="badge badge-outline">タグ２</div>
         </div>
+        <% if current_user.own?(post) %>
+          <div class="card-actions justify-end">
+            <div class="badge badge-outline">編集</div>
+            <div class="badge badge-outline"><%= link_to '削除', post_path(post), data: { turbo_method: :delete, turbo_confirm: '削除しますか？' } %></div>
+          </div>
+        <% else %>
+          <div class="card-actions justify-end">
+            <%= link_to '動画を見る', new_laugh_log_path(post.video.id), class: "badge badge-outline" %>
+          </div>
+          <% if current_user.like?(post) %>
+            <span class="material-symbols-outlined">
+              <%= link_to 'bad thumb_up_off', post_likes_path(post), data: { turbo_method: :delete } %>
+            </span>
+          <% else %>
+            <span class="material-symbols-outlined">
+              <%= link_to 'good thumb_up_off', post_likes_path(post), data: { turbo_method: :post } %>
+            </span>
+          <% end %>
+        <% end %>
       </div>
     </div>
   <% end %>
 </div>
+<%== pagy_nav(@pagy) %>

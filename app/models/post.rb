@@ -23,4 +23,5 @@ class Post < ApplicationRecord
   belongs_to :video
 
   has_many :laugh_logs, dependent: :destroy
+  has_many :likes, dependent: :destroy
 end
