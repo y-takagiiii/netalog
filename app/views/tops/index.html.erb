@@ -9,3 +9,6 @@
   <%= link_to "アカウントお持ちでない方はこちら", new_user_path, class: "link" %>
 </div>
 
+<div>
+  <%= link_to "Googleアカウントでログイン", auth_at_provider_path(provider: :google), class: "link" %>
+</div>

@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   post 'guest_login', to: 'user_sessions#guest_login'
+  post 'google_login/callback', to: 'google_logins#oauth'
+  get 'google_login/callback', to: 'google_logins#oauth'
+  get 'google_login/:provider', to: 'google_logins#oauth', as: :auth_at_provider
   delete 'logout', to: 'user_sessions#destroy'
   get 'search', to: 'searches#search'
   get 'search_result', to: 'searches#result'
