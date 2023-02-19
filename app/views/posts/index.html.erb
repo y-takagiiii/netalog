@@ -15,7 +15,9 @@
       <div class="card-body">
         <h2 class="card-title">
           <%= post.video.title %>
-          <div class="badge badge-secondary">NEW</div>
+          <% if post.new? %>
+            <div class="badge badge-secondary">NEW</div>
+          <% end %>
         </h2>
         <div class="card-actions justify-end">
           <div class="badge badge-outline">タグ1</div>
@@ -28,16 +30,16 @@
           </div>
         <% else %>
           <div class="card-actions justify-end">
-            <%= link_to '動画を見る', new_laugh_log_path(post.video.id), class: "badge badge-outline" %>
+            <%= link_to '投稿する', new_laugh_log_path(post.video.id), class: "badge badge-outline" %>
           </div>
           <% if current_user.like?(post) %>
-            <span class="material-symbols-outlined">
-              <%= link_to 'bad thumb_up_off', post_likes_path(post), data: { turbo_method: :delete } %>
-            </span>
+            <%= button_to post_likes_path(post), method: :delete do %>
+              <i class="fa-solid fa-thumbs-up fa-xl"></i>
+            <% end %>
           <% else %>
-            <span class="material-symbols-outlined">
-              <%= link_to 'good thumb_up_off', post_likes_path(post), data: { turbo_method: :post } %>
-            </span>
+            <%= button_to post_likes_path(post), method: :post do %>
+              <i class="fa-regular fa-thumbs-up fa-xl"></i>
+            <% end %>
           <% end %>
         <% end %>
       </div>
