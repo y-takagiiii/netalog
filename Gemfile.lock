@@ -378,7 +378,7 @@ DEPENDENCIES
   pagy (~> 6.0)
   puma (~> 5.0)
   rails (~> 7.0.4)
-  rails-i18n (~> 7.0, >= 7.0.6)
+  rails-i18n (~> 7.0)
   redis (~> 4.0)
   rspec-rails (~> 6.0, >= 6.0.1)
   rubocop (~> 1.41, >= 1.41.1)
