@@ -57,7 +57,7 @@ gem 'sorcery', '~> 0.16.4'
 # youtube data api
 gem 'google-api-client', '~> 0.53.0'
 
-gem 'rails-i18n', '~> 7.0', '>= 7.0.6'
+gem 'rails-i18n', '~> 7.0'
 gem 'enum_help', '~> 0.0.19'
 
 # pagination
