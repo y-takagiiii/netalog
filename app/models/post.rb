@@ -24,4 +24,8 @@ class Post < ApplicationRecord
 
   has_many :laugh_logs, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  def new?
+    created_at > Time.current.yesterday
+  end
 end
