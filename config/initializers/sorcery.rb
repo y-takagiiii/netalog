@@ -160,9 +160,9 @@ Rails.application.config.sorcery.configure do |config|
   #
   config.google.key = Rails.application.credentials.dig(:google, :client_id)
   config.google.secret = Rails.application.credentials.dig(:google, :client_secret)
-  config.google.callback_url = "http://localhost:3000/google_login/callback?provider=google"
-  # config.google.user_info_mapping = {:email => "email", :username => "name"}
-  # config.google.scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+  config.google.callback_url = Settings.sorcery[:google_callback_url]
+  config.google.user_info_mapping = {:email => "email", :name => "name"}
+  config.google.scope = "https://www.googleapis.com/auth/userinfo.email"
   #
   # For Microsoft Graph, the key will be your App ID, and the secret will be your app password/public key.
   # The callback URL "can't contain a query string or invalid special characters"
@@ -226,7 +226,7 @@ Rails.application.config.sorcery.configure do |config|
   # config.line.bot_prompt = "normal"
   # config.line.user_info_mapping = {name: 'displayName'}
 
-  
+
   # For information about Discord API
   # https://discordapp.com/developers/docs/topics/oauth2
   # config.discord.key = "xxxxxx"
@@ -543,7 +543,7 @@ Rails.application.config.sorcery.configure do |config|
     # Class which holds the various external provider data for this user.
     # Default: `nil`
     #
-    # user.authentications_class =
+    user.authentications_class = Authentication
 
     # User's identifier in the `authentications` class.
     # Default: `:user_id`

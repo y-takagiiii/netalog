@@ -2,3 +2,6 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "chartkick/chart.js"
+
+// TurboDriveをオフにする
+Turbo.session.drive = false
