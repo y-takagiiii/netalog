@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-theme="emerald">
   <head>
-    <title>ねたろぐ</title>
+    <title>ネタログ</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,6 +14,5 @@
     <%= render logged_in? ? 'shared/after_login_header' : 'shared/before_login_header' %>
     <%= render 'shared/flash_message' %>
     <%= yield %>
-    <%= render 'shared/footer' %>
   </body>
 </html>
