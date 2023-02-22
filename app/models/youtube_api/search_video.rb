@@ -12,7 +12,7 @@ module YoutubeApi::SearchVideo
       region_code: 'JP',
       relevance_language: 'ja',
       order: :relevance,
-      max_results: 10
+      max_results: 12
     }
 
     search_result_videos = youtube.list_searches(:snippet, **options)
