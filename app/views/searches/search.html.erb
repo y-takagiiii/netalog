@@ -1,11 +1,8 @@
-<h1>Searches#search</h1>
-<p>Find me in app/views/searches/search.html.erb</p>
-<div>
-  <%= link_to '投稿一覧へ', posts_path %>
-</div>
-<div>
+<div class="flex justify-center">
   <%= form_with url: search_result_path, method: :get do |f| %>
-    <%= f.text_field :query %>
-    <%= f.submit '検索' %>
+    <%= f.text_field :query, class: "px-4 py-2 w-80 rounded-full", placeholder: "ネタを探す" %>
+    <%= f.button nil, class: "px-4" do %>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    <% end %>
   <% end %>
 </div>

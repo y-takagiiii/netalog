@@ -1,9 +1,14 @@
-<h1>Searches#result</h1>
-<p>Find me in app/views/searches/result.html.erb</p>
 <p><%= link_to '戻る', search_path %></p>
 
-<% @searched_videos.each do |searched_video| %>
-  <p><%= link_to image_tag(searched_video[:thumbnail]), new_laugh_log_path(searched_video), data: { turbo: false } %></p>
-  <p><%= searched_video[:title] %></p>
-  <p>再生回数 <%= searched_video[:view_count] %></p>
-<% end %>
+<div class="mx-3">
+  <% @searched_videos.each do |searched_video| %>
+  <div class="flex mx-auto">
+    <div><%= link_to image_tag(searched_video[:thumbnail]), new_laugh_log_path(searched_video), data: { turbo: false } %></div>
+    <div>
+      <p class="card-title"><%= searched_video[:title] %></p>
+      <p>再生回数 <%= searched_video[:view_count] %></p>
+      <p><%= searched_video[:description] %></p>
+    </div>
+  </div>
+  <% end %>
+</div>

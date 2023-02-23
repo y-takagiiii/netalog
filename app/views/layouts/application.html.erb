@@ -14,5 +14,7 @@
     <%= render logged_in? ? 'shared/after_login_header' : 'shared/before_login_header' %>
     <%= render 'shared/flash_message' %>
     <%= yield %>
+    <%= render 'shared/drawer' if logged_in? %>
+    <%= render 'shared/footer' unless logged_in? %>
   </body>
 </html>
