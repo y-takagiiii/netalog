@@ -1,55 +1,46 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
-<p><%= current_user.name %>さん</p>
-
-<div>
-  <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete } %>
-</div>
-
-<div>
-  <%= link_to '検索画面へ', search_path %>
-</div>
-
-<h1>投稿一覧</h1>
-<div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 place-items-center mx-3">
-
-  <% @posts.each do |post| %>
-    <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1">
-      <p>投稿者 <%= post.user.name %></p>
-      <figure>
-        <%= link_to image_tag(post.video.thumbnail, class: "w-fit"), post_path(post) %>
-        <%#= image_tag post.video.thumbnail, class: "w-fit" %>
-      </figure>
-      <div class="card-body">
-        <h2 class="card-title">
-          <%= post.video.title %>
-          <div class="badge badge-secondary">NEW</div>
-        </h2>
-        <div class="card-actions justify-end">
-          <div class="badge badge-outline">タグ1</div>
-          <div class="badge badge-outline">タグ２</div>
-        </div>
-        <% if current_user.own?(post) %>
+  <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 place-items-center mx-3">
+    <% @posts.each do |post| %>
+      <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1">
+        <p>投稿者 <%= post.user.name %></p>
+        <figure>
+          <%= link_to image_tag(post.video.thumbnail, class: "w-fit"), post_path(post) %>
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">
+            <%= post.video.title %>
+            <% if post.new? %>
+              <div class="badge badge-secondary">NEW</div>
+            <% end %>
+          </h2>
           <div class="card-actions justify-end">
-            <div class="badge badge-outline">編集</div>
-            <div class="badge badge-outline"><%= link_to '削除', post_path(post), data: { turbo_method: :delete, turbo_confirm: '削除しますか？' } %></div>
+            <div class="badge badge-outline">タグ1</div>
+            <div class="badge badge-outline">タグ２</div>
           </div>
-        <% else %>
-          <div class="card-actions justify-end">
-            <%= link_to '動画を見る', new_laugh_log_path(post.video.id), data: { turbo: false }, class: "badge badge-outline" %>
-          </div>
-          <% if current_user.like?(post) %>
-            <span class="material-symbols-outlined">
-              <%= link_to 'bad thumb_up_off', post_likes_path(post), data: { turbo_method: :delete } %>
-            </span>
+          <% if current_user.own?(post) %>
+            <div class="card-actions justify-end">
+              <div class="badge badge-outline">編集</div>
+              <div class="badge badge-outline">
+                <%= link_to '削除', post_path(post), data: { turbo_method: :delete, turbo_confirm: '削除しますか？' } %>
+              </div>
+            </div>
           <% else %>
-            <span class="material-symbols-outlined">
-              <%= link_to 'good thumb_up_off', post_likes_path(post), data: { turbo_method: :post } %>
-            </span>
+            <div class="card-actions justify-end">
+              <%= link_to '動画を見る', new_laugh_log_path(post.video.id), data: { turbo: false }, class: "badge badge-outline" %>
+            </div>
+            <% if current_user.like?(post) %>
+              <%= button_to post_likes_path(post), method: :delete do %>
+                <i class="fa-solid fa-thumbs-up fa-xl"></i>
+              <% end %>
+            <% else %>
+              <%= button_to post_likes_path(post), method: :post do %>
+                <i class="fa-regular fa-thumbs-up fa-xl"></i>
+              <% end %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
-<%== pagy_nav(@pagy) %>
+    <% end %>
+  </div>
+  <div class="flex justify-center my-5">
+    <%== pagy_nav(@pagy) %>
+  </div>

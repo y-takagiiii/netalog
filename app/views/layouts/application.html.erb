@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html data-theme="emerald">
   <head>
-    <title>Netatube</title>
+    <title>ネタログ</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%#= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@undefined,undefined,undefined,undefined", media: 'all' %>
-    <%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0", media: 'all' %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= favicon_link_tag 'favicon.ico' %>
   </head>
 
   <body>
     <%= render logged_in? ? 'shared/after_login_header' : 'shared/before_login_header' %>
     <%= render 'shared/flash_message' %>
     <%= yield %>
-    <%= render 'shared/footer' %>
+    <%= render 'shared/drawer' if logged_in? %>
+    <%= render 'shared/footer' unless logged_in? %>
   </body>
 </html>
