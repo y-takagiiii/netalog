@@ -1,7 +1,7 @@
 databases:
   - name: netalog
-    databaseName: netalog_db
-    user: yuri_takagi
+    databaseName: netalog_db_vvl9
+    user: netalog_db_vvl9_user
     region: singapore
 
 services:
@@ -15,7 +15,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: netalog_db
+          name: netalog
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
