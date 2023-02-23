@@ -68,6 +68,7 @@ gem 'chartkick', '~> 5.0.1'
 
 # oauth
 gem 'oauth', '~> 0.6.2'
+gem 'oauth2', '~> 2.0', '>= 2.0.9'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
