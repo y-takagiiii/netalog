@@ -3,10 +3,9 @@ class SearchesController < ApplicationController
   include YoutubeApi::SaveVideo
   include YoutubeApi::UpdateVideo
 
-  def search; end
-
-  def result
+  def search
     search_word = params[:query]
+    return if search_word.blank?
     @searched_videos = Video.where(search_word:)
 
     return @searched_videos if save_and_recent_video?

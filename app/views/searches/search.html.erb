@@ -1,8 +1,25 @@
 <div class="flex justify-center">
-  <%= form_with url: search_result_path, method: :get do |f| %>
+  <%= form_with url: search_path, method: :get do |f| %>
     <%= f.text_field :query, class: "px-4 py-2 w-80 rounded-full", placeholder: "ネタを探す" %>
     <%= f.button nil, class: "px-4" do %>
       <i class="fa-solid fa-magnifying-glass"></i>
     <% end %>
   <% end %>
 </div>
+
+<% if @searched_videos %>
+  <div class="mx-3 mt-3">
+    <% @searched_videos.each do |searched_video| %>
+      <div class="flex mx-auto">
+        <div>
+          <%= link_to image_tag(searched_video[:thumbnail]), new_laugh_log_path(searched_video), data: { turbo: false } %>
+        </div>
+        <div>
+          <p class="card-title"><%= searched_video[:title] %></p>
+          <p>再生回数 <%= searched_video[:view_count] %></p>
+          <p><%= searched_video[:description] %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
