@@ -6,7 +6,6 @@
         <a href="/posts" ><i class="fa-solid fa-house"></i>ホーム</a>
       </li>
       <li>
-        <%# <a href="/search"><i class="fa-solid fa-magnifying-glass"></i>ネタを探す</a> %>
         <a href="/search"><i class="fa-brands fa-youtube"></i>ネタを探す</a>
       </li>
       <li>
@@ -25,10 +24,14 @@
         </div>
       </li>
       <div class="divider"></div>
-      <li><a href=""><i class="fa-solid fa-arrow-trend-up"></i>人気の投稿</a></li>
+      <li><a href="#"><i class="fa-solid fa-arrow-trend-up"></i>人気の投稿</a></li>
       <div class="divider"></div>
-      <li><a href=""><i class="fa-regular fa-circle-question"></i>ヘルプ</a></li>
-      <li><a href=""><i class="fa-regular fa-envelope"></i>フィードバックを送る</a></li>
+      <li><a href="#"><i class="fa-regular fa-circle-question"></i>ヘルプ</a></li>
+      <li>
+        <%= link_to "https://forms.gle/KGjZ4MLtyrNMhoNV8", target: :_blank, rel: "noopener noreferrer" do %>
+          <i class="fa fa-regular fa-envelope"></i>フィードバックを送る
+        <% end %>
+      </li>
       <div class="divider"></div>
       <li><%= link_to 'ネタログについて', '#' %></li>
       <li><%= link_to 'プライバシーポリシー', '#' %></li>
