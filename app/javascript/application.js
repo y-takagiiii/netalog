@@ -2,3 +2,4 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "chartkick/chart.js"
+Turbo.session.drive = false;
