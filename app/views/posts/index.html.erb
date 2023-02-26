@@ -5,38 +5,42 @@
         <figure>
           <%= link_to image_tag(post.video.thumbnail, class: "w-fit"), post_path(post) %>
         </figure>
-        <div class="card-body">
+        <div class="card-body h-72 justify-between">
           <h2 class="card-title">
             <%= post.video.title %>
             <% if post.new? %>
               <div class="badge badge-secondary">NEW</div>
             <% end %>
           </h2>
-          <div class="card-actions justify-end">
-            <div class="badge badge-outline">タグ1</div>
-            <div class="badge badge-outline">タグ２</div>
-          </div>
-          <% if current_user.own?(post) %>
+          <div>
             <div class="card-actions justify-end">
-              <div class="badge badge-outline">編集</div>
-              <div class="badge badge-outline">
-                <%= link_to '削除', post_path(post), data: { turbo_method: :delete, turbo_confirm: '削除しますか？' } %>
+              <div class="badge badge-outline">タグ1</div>
+              <div class="badge badge-outline">タグ２</div>
+            </div>
+            <% if current_user.own?(post) %>
+              <div class="card-actions mt-3 justify-end">
+                <div class="badge badge-outline">編集</div>
+                <div class="badge badge-outline">
+                  <%= link_to '削除', post_path(post), data: { turbo_method: :delete, turbo_confirm: '削除しますか？' } %>
+                </div>
               </div>
-            </div>
-          <% else %>
-            <div class="card-actions justify-end">
-              <%= link_to '動画を見る', new_laugh_log_path(post.video.id), data: { turbo: false }, class: "badge badge-outline" %>
-            </div>
-            <% if current_user.like?(post) %>
-              <%= button_to post_likes_path(post), method: :delete do %>
-                <i class="fa-solid fa-thumbs-up fa-xl"></i>
-              <% end %>
             <% else %>
-              <%= button_to post_likes_path(post), method: :post do %>
-                <i class="fa-regular fa-thumbs-up fa-xl"></i>
-              <% end %>
+              <div class="card-actions mt-3 justify-end">
+                <%= link_to '動画を見る', new_laugh_log_path(post.video.id), data: { turbo: false }, class: "badge badge-outline" %>
+              </div>
+              <div class="flex">
+                <% if current_user.like?(post) %>
+                  <%= button_to post_likes_path(post), method: :delete do %>
+                    <i class="fa-solid fa-thumbs-up fa-xl"></i>
+                  <% end %>
+                <% else %>
+                  <%= button_to post_likes_path(post), method: :post do %>
+                    <i class="fa-regular fa-thumbs-up fa-xl"></i>
+                  <% end %>
+                <% end %>
+              </div>
             <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
     <% end %>
