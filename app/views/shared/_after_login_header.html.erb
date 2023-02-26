@@ -20,12 +20,12 @@
             </label>
             <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
               <li>
-                <%= link_to '#' do%>
+                <%= link_to '#' do %>
                   <i class="fa-regular fa-address-card"></i>マイページ
                 <% end %>
               </li>
               <li>
-                <%= link_to logout_path, data: { turbo_method: :delete } do %>
+                <%= button_to logout_path, method: :delete do %>
                   <i class="fa-solid fa-right-from-bracket"></i>ログアウト
                 <% end %>
               </li>
