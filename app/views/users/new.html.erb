@@ -7,9 +7,13 @@
             <div class="text-center mb-3">
               <h6 class="text-gray-600 text-sm font-bold">Sign in with</h6>
             </div>
-            <div class="btn-wrapper text-center">
-              <button class="bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 shadow hover:shadow-md inline-flex items-center font-bold text-xs" type="button" style="transition: all 0.15s ease 0s;"><i class="fa-brands fa-google mr-3"></i>Google</button>
-              <button class="bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 shadow hover:shadow-md inline-flex items-center font-bold text-xs" type="button" style="transition: all 0.15s ease 0s;"><i class="fa-solid fa-circle-user mr-3"></i><%= link_to 'ゲスト', guest_login_path, data: { turbo_method: :post } %></button>
+            <div class="flex justify-center gap-2">
+              <%= button_to '#', class: "bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 shadow hover:shadow-md inline-flex items-center font-bold text-xs", style: "transition: all 0.15s ease 0s;" do %>
+                <i class="fa-brands fa-google mr-3"></i>Google
+              <% end %>
+              <%= button_to guest_login_path, method: :post, class: "bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 shadow hover:shadow-md inline-flex items-center font-bold text-xs", style: "transition: all 0.15s ease 0s;" do %>
+                <i class="fa-solid fa-circle-user mr-3"></i>ゲスト
+              <% end %>
             </div>
           </div>
           <div class="divider text-gray-500">OR</div>
@@ -32,7 +36,7 @@
                 <%= f.password_field :password_confirmation, class: "input input-bordered w-full" %>
               </div>
               <div class="text-center mt-6">
-                <%= f.submit (t 'defaults.login'), class: "btn btn-secondary px-6 py-3"%>
+                <%= f.submit (t 'defaults.register'), class: "btn btn-secondary px-6 py-3"%>
               </div>
             <% end %>
           </div>

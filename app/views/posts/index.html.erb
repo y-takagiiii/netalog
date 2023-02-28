@@ -1,12 +1,15 @@
-  <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 place-items-center mx-3">
+  <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 place-items-center mx-3">
     <% @posts.each do |post| %>
-      <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1">
-        <p>投稿者 <%= post.user.name %></p>
+      <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1.5">
+        <div class="flex justify-between">
+          <p>投稿者 <%= post.user.name %></p>
+          <p>○笑い</p>
+        </div>
         <figure>
           <%= link_to image_tag(post.video.thumbnail, class: "w-fit"), post_path(post) %>
         </figure>
-        <div class="card-body h-72 justify-between">
-          <h2 class="card-title">
+        <div class="card-body h-60 justify-between">
+          <h2 class="card-title text-base">
             <%= post.video.title %>
             <% if post.new? %>
               <div class="badge badge-secondary">NEW</div>
@@ -21,12 +24,12 @@
               <div class="card-actions mt-3 justify-end">
                 <div class="badge badge-outline">編集</div>
                 <div class="badge badge-outline">
-                  <%= link_to '削除', post_path(post), data: { turbo_method: :delete, turbo_confirm: '削除しますか？' } %>
+                  <%= button_to '削除', post_path(post), method: :delete %>
                 </div>
               </div>
             <% else %>
               <div class="card-actions mt-3 justify-end">
-                <%= link_to '動画を見る', new_laugh_log_path(post.video.id), data: { turbo: false }, class: "badge badge-outline" %>
+                <%= link_to '動画を見る', new_laugh_log_path(post.video.id), class: "badge badge-outline" %>
               </div>
               <div class="flex">
                 <% if current_user.like?(post) %>
