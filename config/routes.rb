@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
 
   get 'search', to: 'searches#search'
-  get 'search_result', to: 'searches#result'
 
   get 'laugh_logs/new/:id', to: 'laugh_logs#new', as: 'new_laugh_log'
   post 'laugh_logs', to: 'laugh_logs#create'

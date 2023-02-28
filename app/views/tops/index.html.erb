@@ -1,4 +1,26 @@
-<div>
-  <p>サービス説明</p>
-  <p>使い方</p>
+<div class="container mx-auto p-4">
+  <div class="flex items-center justify-center">
+    <div><%= image_tag 'netalog_with_text.png', size: "300x300" %></div>
+    <div>
+      <p>笑いのタイミングを共有して</p>
+      <p>楽しい思い出を残そう！</p>
+    </div>
+  </div>
+  <div class="flex justify-center">
+    <%= link_to '使ってみる', new_user_path, role: "button", class: "btn btn-sm btn-secondary" %>
+  </div>
+  <div>
+    <%# <div class="text-lg text-center my-3">使い方</div>
+    <div class="grid grid-cols-3 gap-y-2">
+      <div class="col-span-1 bg-gray-100">イメージ画像1</div>
+      <div class="col-span-2 bg-blue-100">動画を探す</div>
+      <div class="col-span-2 bg-amber-100">動画を見ながら拍手ボタンを押す</div>
+      <div class="col-span-1 bg-red-100">イメージ画像2</div>
+      <div class="col-span-1 bg-orange-100">投稿する</div>
+      <div class="col-span-2 bg-yellow-100">イメージ画像</div>
+    </div> %>
+  </div>
 </div>
+
+
+

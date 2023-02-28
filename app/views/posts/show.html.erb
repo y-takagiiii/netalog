@@ -1,3 +1,4 @@
+<div class="container mx-auto my-3">
   <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1">
     <p>投稿者 <%= @post.user.name %></p>
     <figure>
@@ -26,6 +27,9 @@
     </div>
   </div>
 
+<%
+=begin
+%>
   <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1">
     <div class="card-body">
       <div class="card-title">
@@ -34,5 +38,9 @@
       <%= line_chart @post.laugh_logs.group(:button_pressed_time).count %>
     </div>
   </div>
+<%
+=end
+%>
+</div>
 
 
