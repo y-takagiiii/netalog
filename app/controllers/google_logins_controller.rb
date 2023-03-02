@@ -13,7 +13,6 @@ class GoogleLoginsController < ApplicationController
     end
 
     begin
-      binding.b
       create_user_from(provider) unless (@user = login_form(provider))
       redirect_to posts_path, success: "#{provider.titleize}アカウントでログインしました"
     rescue StandardError
