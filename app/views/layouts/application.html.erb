@@ -16,7 +16,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', Rails.application.credentials.google[:analytics]);
+    gtag('config', <%= Rails.application.credentials.google[:analytics] %>);
   </script>
 
   <body>
