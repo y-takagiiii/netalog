@@ -9,6 +9,15 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= Rails.application.credentials.google[:analytics] %>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', Rails.application.credentials.google[:analytics]);
+  </script>
 
   <body>
     <%= render logged_in? ? 'shared/after_login_header' : 'shared/before_login_header' %>
