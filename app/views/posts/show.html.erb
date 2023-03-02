@@ -27,14 +27,4 @@
     </div>
   </div>
 
-  <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1">
-    <div class="card-body">
-      <div class="card-title">
-        <h2>ログ</h2>
-      </div>
-      <%= line_chart @post.laugh_logs.group(:button_pressed_time).count %>
-    </div>
-  </div>
 </div>
-
-
