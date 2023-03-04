@@ -28,9 +28,6 @@
                 </div>
               </div>
             <% else %>
-              <div class="card-actions mt-3 justify-end">
-                <%= link_to '動画を見る', new_laugh_log_path(post.video.id), class: "badge badge-outline" %>
-              </div>
               <div class="flex">
                 <% if current_user.like?(post) %>
                   <%= button_to post_likes_path(post), method: :delete do %>
