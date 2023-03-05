@@ -1,6 +1,6 @@
 <div class="flex flex-col items-center">
   <div class="my-3" id="player"></div>
-  <span><%#= @video.title %></span>
+  <span><%= @video.title %></span>
   <%= button_tag class: "my-3", id: "laugh-button" do %>
     <i class="fa-solid fa-hands-clapping fa-6x"></i>
   <% end %>
@@ -47,7 +47,6 @@
   // 動画の操作
   const laughButton = document.getElementById('laugh-button')
   let buttonPressedTime = []
-
   laughButton.addEventListener('click',() => {
     buttonPressedTime.push(player.getCurrentTime())
     document.getElementById("laugh-log-time").value = buttonPressedTime
