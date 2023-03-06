@@ -8,9 +8,9 @@
         <figure>
           <%= link_to image_tag(post.video.thumbnail, class: "w-fit"), post_path(post) %>
         </figure>
-        <div class="card-body h-60 justify-between">
+        <div class="card-body h-56 justify-between">
           <h2 class="card-title text-base">
-            <%= post.video.title %>
+            <%= post.video.title.truncate(40) %>
             <% if post.new? %>
               <div class="badge badge-secondary">NEW</div>
             <% end %>
