@@ -6,7 +6,7 @@
 #  button_pressed_time :float
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
-#  post_id             :integer          not null
+#  post_id             :bigint           not null
 #
 # Indexes
 #

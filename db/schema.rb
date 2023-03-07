@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_211545) do
   end
 
   create_table "laugh_logs", force: :cascade do |t|
-    t.integer "post_id", null: false
+    t.bigint "post_id", null: false
     t.float "button_pressed_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -32,8 +32,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_211545) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "post_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
@@ -42,10 +42,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_211545) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "video_id", default: 0, null: false
+    t.bigint "video_id", default: 0, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
     t.index ["video_id"], name: "index_posts_on_video_id"
   end
