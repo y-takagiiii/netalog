@@ -2,8 +2,11 @@
   <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1">
     <p>投稿者 <%= @post.user.name %></p>
     <figure>
-      <%= image_tag @post.video.thumbnail, class: "w-fit" %>
+      <div class="my-3" id="player"></div>
     </figure>
+    <div class="flex justify-center">
+      <div id="clapp-icon" class="opacity-0"><i class="fa-solid fa-hands-clapping"></i></div>
+    </div>
     <div class="card-body">
       <h2 class="card-title">
         <%= @post.video.title %>
@@ -19,22 +22,64 @@
           <div class="badge badge-outline">編集</div>
           <div class="badge badge-outline"><%= link_to '削除', post_path(@post), data: { turbo_method: :delete, turbo_confirm: '削除しますか？' } %></div>
         </div>
-      <% else %>
-        <div class="card-actions justify-end">
-          <%= link_to '動画を見る', new_laugh_log_path(@post.video.id), data: { turbo: false }, class: "badge badge-outline" %>
-        </div>
       <% end %>
     </div>
   </div>
 
-  <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1">
-    <div class="card-body">
-      <div class="card-title">
-        <h2>ログ</h2>
-      </div>
-      <%= line_chart @post.laugh_logs.group(:button_pressed_time).count %>
-    </div>
-  </div>
+<script>
+  // IFrame Player API の読み込みタグを挿入
+  var tag = document.createElement('script')
+  tag.src = "https://www.youtube.com/iframe_api"
+  var firstScriptTag = document.getElementsByTagName('script')[0]
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+
+  // 関数onYouTubeIframeAPIReadyでiframeとYoutubeプレイヤーを作成
+  var player
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      videoId: '<%= @post.video.youtube_id %>',
+      height: '576',
+      width: '1024', // アスペクト比16:9 1280:720 1024:576 896:504 768:432 640:360
+      playerVars: {
+        rel: 0,
+        fs: 0,
+        modestbranding: 1,
+      },
+      events: {
+        'onStateChange': onPlayerStateChange
+      }
+    })
+  }
+
+  let buttonPressedTime = []
+  <% @post.laugh_logs.each do |log| %>
+    buttonPressedTime.push('<%= log.button_pressed_time.floor(1) %>')
+  <% end %>
+
+  const clapp_icon = document.getElementById('clapp-icon')
+
+  let timerId
+  function onPlayerStateChange(e) {
+    if (timerId) {
+      clearInterval(timerId)
+    }
+    if (e.data == YT.PlayerState.PLAYING) {
+      timerId = setInterval(() => {
+        const passedTime = player.getCurrentTime().toFixed(1)
+        if (buttonPressedTime.includes(passedTime)) {
+          setTimeout(() => {
+            clapp_icon.className = "opacity-1"
+          })
+          setTimeout(() => {
+            clapp_icon.className = "opacity-0"
+          }, 1000)
+        }
+      }, 100)
+    } else {
+      clearInterval(timerId)
+    }
+  }
+
+</script>
+
 </div>
-
-

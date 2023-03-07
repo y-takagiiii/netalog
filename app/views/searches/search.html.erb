@@ -1,7 +1,7 @@
 <div class="flex justify-center my-3">
   <%= form_with url: search_path, method: :get, class: "flex justify-center w-1/2" do |f| %>
     <%= f.text_field :query, class: "px-4 py-2 w-80 rounded-full", placeholder: "ネタを探す" %>
-    <%= f.button nil, class: "px-4" do %>
+    <%= f.button class: "px-4" do %>
       <i class="fa-solid fa-magnifying-glass"></i>
     <% end %>
   <% end %>
