@@ -2,7 +2,7 @@
 #
 # Table name: laugh_logs
 #
-#  id                  :integer          not null, primary key
+#  id                  :bigint           not null, primary key
 #  button_pressed_time :float
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
@@ -14,7 +14,7 @@
 #
 # Foreign Keys
 #
-#  post_id  (post_id => posts.id)
+#  fk_rails_...  (post_id => posts.id)
 #
 FactoryBot.define do
   factory :laugh_log do
