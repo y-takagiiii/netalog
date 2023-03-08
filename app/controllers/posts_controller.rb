@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show destroy]
 
   def index
-    @pagy, @posts = pagy(Post.includes([:user, :video, :laugh_logs]).order(id: :desc))
+    @pagy, @posts = pagy(Post.includes([:user, :video]).order(id: :desc))
   end
 
   def show; end
@@ -13,9 +13,9 @@ class PostsController < ApplicationController
     @post.destroy!
     redirect_to posts_path, success: '投稿を削除しました。'
   end
-  
+
   private
-  
+
   def set_post
     @post = Post.find(params[:id])
   end
