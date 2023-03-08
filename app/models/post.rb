@@ -28,4 +28,8 @@ class Post < ApplicationRecord
   def new?
     created_at > Time.current.yesterday
   end
+
+  def count_button_pressed_times
+    laugh_logs.count
+  end
 end
