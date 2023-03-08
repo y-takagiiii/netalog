@@ -29,6 +29,15 @@
 @tailwind components;
 @tailwind utilities;
 
+#laugh-button {
+  box-shadow: 1px 5px 1px #d97706;
+	transition: .5s;
+}
+
+#laugh-button:active {
+  box-shadow: 0 0 0 #d97706;
+}
+
 #clapp-icon {
 	transition: opacity 0.5s 0s ease-in-out;
 }
