@@ -1,13 +1,14 @@
 <div class="flex flex-col items-center">
   <div class="my-3" id="player"></div>
-  <span><%= @video.title %></span>
-  <%= button_tag class: "my-3", id: "laugh-button" do %>
-    <i class="fa-solid fa-hands-clapping fa-6x"></i>
+  <span><%#= @video.title %></span>
+  <%= button_tag class: "my-1 w-20 h-20 rounded-full bg-amber-500", id: "laugh-button" do %>
+    <i class="fa-solid fa-hands-clapping fa-3x"></i>
   <% end %>
+
   <%= form_with model: @laugh_log, class: "my-3" do |f| %>
     <%= f.hidden_field :laugh_log_time, id: 'laugh-log-time' %>
     <%= hidden_field_tag :video_id, @video.id %>
-    <%= f.submit 'ログを作成する' %>
+    <%= f.submit 'ログを作成する', class: "btn btn-sm" %>
   <% end %>
 </div>
 
