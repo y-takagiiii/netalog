@@ -33,6 +33,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: true
   validates :role, presence: true
+  validates :reset_password_token, presence: true, uniqueness: true, allow_nil: true
 
   enum role: { general: 0, admin: 10 }
 
