@@ -1,2 +1,20 @@
-<h1>Notifications#show</h1>
-<p>Find me in app/views/notifications/show.html.erb</p>
+<div class="flex justify-center">
+  <div class="overflow-x-auto">
+    <table class="table w-full">
+      <thead>
+        <tr>
+          <th>日付</th>
+          <th>お知らせ</th>
+          <th>内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th><%= l @notification.updated_at, format: :short %></th>
+          <td><%= @notification.title %></td>
+          <td><%= @notification.content %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
