@@ -30,12 +30,12 @@
                 <% end %>
               </li>
               <li>
-                <a href="#">
+                <%= link_to notifications_path do %>
                   <i class="fa-regular fa-bell mr-1"></i>お知らせ
-                  <% if @notification.updated_at < Time.current.weeks_ago(1) %>
+                  <% if @notification.updated_at > Time.current.weeks_ago(1) %>
                     <span class="badge">New</span>
                   <% end %>
-                </a>
+                <% end %>
               </li>
             </ul>
           </div>
