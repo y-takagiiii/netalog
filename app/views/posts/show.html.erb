@@ -1,6 +1,9 @@
 <div class="container mx-auto my-3">
   <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1">
-    <p>投稿者 <%= @post.user.name %></p>
+    <div class="flex justify-between">
+      <p>投稿者 <%= @post.user.name %></p>
+      <p><%= @post.count_button_pressed_times %>笑い</p>
+    </div>
     <figure>
       <div class="my-3" id="player"></div>
     </figure>
@@ -14,8 +17,8 @@
       </h2>
       <p><%= @post.video.description %></p>
       <div class="card-actions justify-end">
-        <div class="badge badge-outline">Fashion</div>
-        <div class="badge badge-outline">Products</div>
+        <div class="badge badge-outline">タグ1</div>
+        <div class="badge badge-outline">タグ2</div>
       </div>
       <% if current_user.own?(@post) %>
         <div class="card-actions justify-end">
