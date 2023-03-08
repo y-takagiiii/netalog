@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= favicon_link_tag 'favicon.ico' %>
+    <%#= display_meta_tags(default_meta_tags) %>
   </head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=<%= Rails.application.credentials.google[:analytics] %>"></script>
