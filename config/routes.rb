@@ -18,4 +18,5 @@ Rails.application.routes.draw do
     resource :likes, only: %i[create destroy]
   end
   resources :notifications, only: %i[index show]
+  resources :password_resets, only: %i[new create edit update]
 end
