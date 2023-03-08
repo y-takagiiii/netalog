@@ -5,6 +5,10 @@ ja:
     logout: ログアウト
     sign_up: 新規登録
     register: 登録
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%m/%d %H:%M"
   users:
     create:
       success: ユーザー登録が完了しました

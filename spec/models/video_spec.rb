@@ -2,7 +2,7 @@
 #
 # Table name: videos
 #
-#  id          :integer          not null, primary key
+#  id          :bigint           not null, primary key
 #  description :text
 #  search_word :string
 #  thumbnail   :string

@@ -1,8 +1,16 @@
 User.create!(
+  name: "admin",
+  email: "admin@example.com",
+  password: "admin01",
+  password_confirmation: "admin01",
+  role: 10
+)
+
+User.create!(
   name: "test",
   email: "test@example.com",
   password: "password",
-  password_confirmation: "password"
+  password_confirmation: "password",
 )
 
 10.times do
@@ -13,6 +21,27 @@ User.create!(
     password_confirmation: 'password'
   )
 end
+
+AdminNotification.create!(
+  user_id: 1,
+  title: "機能1を追加しました。",
+  content: "お待たせいたしました。ユーザー様のご要望どおり機能1を実装いたしました。",
+  updated_at: Time.current.weeks_ago(3)
+)
+
+AdminNotification.create!(
+  user_id: 1,
+  title: "機能2を追加しました。",
+  content: "お待たせいたしました。ユーザー様のご要望どおり機能2を実装いたしました。",
+  updated_at: Time.current.days_ago(5)
+)
+
+AdminNotification.create!(
+  user_id: 1,
+  title: "ベータ版をリリースしました。",
+  content: "ネタログのベータ版をリリースしました。フィードバックをお待ちしております。"
+)
+
 
 Video.create!(
   search_word: 'M1グランプリ',

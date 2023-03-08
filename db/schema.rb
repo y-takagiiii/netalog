@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_10_084625) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_07_211545) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "admin_notifications", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_admin_notifications_on_user_id"
+  end
+
   create_table "laugh_logs", force: :cascade do |t|
-    t.integer "post_id", null: false
+    t.bigint "post_id", null: false
     t.float "button_pressed_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -20,8 +32,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_10_084625) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "post_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
@@ -30,10 +42,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_10_084625) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "video_id", default: 0, null: false
+    t.bigint "video_id", default: 0, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
     t.index ["video_id"], name: "index_posts_on_video_id"
   end
@@ -45,6 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_10_084625) do
     t.string "salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
@@ -59,6 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_10_084625) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "admin_notifications", "users"
   add_foreign_key "laugh_logs", "posts"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
