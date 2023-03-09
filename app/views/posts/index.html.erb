@@ -22,7 +22,9 @@
             </div>
             <% if current_user.own?(post) %>
               <div class="card-actions mt-3 justify-end">
-                <div class="badge badge-outline">編集</div>
+                <div class="badge badge-outline">
+                  <%= link_to '編集', '#' %>
+                </div>
                 <div class="badge badge-outline">
                   <%= button_to '削除', post_path(post), method: :delete %>
                 </div>
