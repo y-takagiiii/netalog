@@ -2,7 +2,7 @@ class LikesController < ApplicationController
   include Pagy::Backend
 
   def index
-    @pagy, @liked_posts = pagy(current_user.liked_posts.includes([:user, :video])).order(id: :desc)
+    @pagy, @liked_posts = pagy(current_user.liked_posts.includes([:user, :video]).order(id: :desc))
   end
 
   def create
