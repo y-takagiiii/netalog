@@ -1,0 +1,28 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  NewCops: enable
+  DisplayCopNames: true
+
+Rails/FilePath:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/BlockLength:
+  Max: 30
+  Exclude:
+    - 'lib/tasks/auto_annotate_models.rake'
+    - 'spec/**/*'
+
+Metrics/MethodLength:
+  Max: 30

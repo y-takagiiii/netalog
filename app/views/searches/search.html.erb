@@ -1,0 +1,39 @@
+<div class="flex justify-center my-3">
+  <%= form_with url: search_path, method: :get, class: "flex justify-center w-1/2" do |f| %>
+    <%= f.text_field :query, class: "px-4 py-2 w-80 rounded-full", placeholder: "ネタを探す" %>
+    <%= f.button class: "px-4" do %>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    <% end %>
+  <% end %>
+</div>
+
+<%# <div class="flex justify-center my-3">
+  <div class="container w-1/2">
+    <i class="fa-solid fa-sliders"></i>フィルタ
+  </div>
+</div> %>
+
+<% if @searched_videos %>
+  <div class="container mx-auto mx-3 my-3">
+    <% @searched_videos.each do |searched_video| %>
+      <div class="card card-side flex bg-base-100 shadow-xl mt-3">
+        <figure>
+          <%= link_to new_laugh_log_path(searched_video) do %>
+            <div class="h-48 w-88">
+              <%= image_tag(searched_video[:thumbnail], class: "w-full h-full") %>
+            </div>
+          <% end %>
+        </figure>
+        <div class="card-body w-60">
+          <h2 class="card-title"><%= searched_video[:title] %></h2>
+          <p>
+            <%= searched_video[:view_count] %>回視聴
+            ・○日前
+          </p>
+          <p><i class="fa-regular fa-circle-user"></i> チャンネル名</p>
+          <p><%= searched_video[:description] %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

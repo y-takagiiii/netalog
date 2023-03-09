@@ -1,0 +1,50 @@
+</div>
+  <div class="drawer-side">
+    <label for="my-drawer" class="drawer-overlay"></label>
+    <ul class="menu p-4 w-80 bg-base-100 text-base-content">
+      <li>
+        <a href="/posts" ><i class="fa-solid fa-house"></i>ホーム</a>
+      </li>
+      <li>
+        <a href="/search"><i class="fa-brands fa-youtube"></i>ネタを探す</a>
+      </li>
+      <li>
+        <%= link_to likes_path do %>
+          <i class="fa-regular fa-thumbs-up fa-xl"></i>いいねした投稿
+        <% end %>
+      </li>
+      <li>
+        <div>
+          <i class="fa-solid fa-list"></i>
+          <div class="dropdown dropdown-hover">
+            <label tabindex="0">プレイリスト</label>
+            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+              <li><a>プレイリスト1</a></li>
+              <li><a>プレイリスト2</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <div class="divider"></div>
+      <li><a href="#"><i class="fa-solid fa-arrow-trend-up"></i>人気の投稿</a></li>
+      <div class="divider"></div>
+      <li><a href="#"><i class="fa-regular fa-circle-question"></i>ヘルプ</a></li>
+      <li>
+        <%= link_to "https://forms.gle/KGjZ4MLtyrNMhoNV8", target: :_blank, rel: "noopener noreferrer" do %>
+          <i class="fa fa-regular fa-envelope"></i>フィードバックを送る
+        <% end %>
+      </li>
+      <div class="divider"></div>
+      <li><%= link_to 'ネタログについて', '#' %></li>
+      <li><%= link_to 'プライバシーポリシー', '#' %></li>
+      <li><%= link_to '利用規約', '#' %></li>
+      <li><%= link_to 'お問い合わせ', '#' %></li>
+      <li>
+        <%= link_to 'https://twitter.com/taasan_runteq32', target: :_blank, rel: "noopener noreferrer" do %>
+        <i class="fa-brands fa-twitter fa-lg"></i>
+        <% end %>
+      </li>
+      <p class="ml-3">© 2023 ネタログ</p>
+    </ul>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 ## サービス名
-**ネタチューブ**
+**ネタログ**
 
 ## ■ サービス概要
 お笑いの動画を見ながら、自分が笑ったタイミングを記録し、その記録をシェアできるサービス
@@ -58,12 +58,16 @@ Youtubeで漫才・コントの動画をよく見る人
 ```mermaid
 erDiagram
   Users ||--o{ Posts : ""
+  Users ||--o{ Authentications : ""
   Posts ||--o{ PostTags : ""
   PostTags }o--|| Tags : ""
-  Posts ||--|| Videos : ""
-  Posts ||--o{ LaughLogs : ""
-  Users ||--o{ Favorites : ""
-  Posts ||--o{ Favorites : ""
+  Posts }|--|| Videos : ""
+	Posts ||--|{ LaughLogs : ""
+  Users ||--o{ Likes : ""
+  Posts ||--o{ Likes : ""
+  Users ||--o{ Bookmarks : ""
+  Bookmarks }o--|| BookmarkPosts : ""
+  Posts ||--o{ BookmarkPosts : ""
   Users ||--o{ Inquiries : ""
   Inquiries }|--|| InquiryItems : ""
   Users ||--o{ FollowRelationships : ""
@@ -75,27 +79,25 @@ erDiagram
     id integer PK
     name string
     email string
-    encrypted_password string
-    reset_password_token datetime
-    reset_password_sent_at datetime
-    remember_created_at datetime
-    sign_in_count integer
-    current_sign_in_at datetime
-    last_sign_in_at datetime
-    current_sign_in_ip string
-    last_sign_in_ip string
+    crypted_password string
+    salt string
     role integer
-    uid string
-    provider string
     title integer
     created_at datetime
     updated_at datetime
+  }
+
+  Authentications {
+    id integer PK
+    provider string
+    uid integer
   }
 
   Posts {
     id integer PK
     user_id integer FK
     video_id integer FK
+    button_pressed_time integer
     created_at datetime
     updated_at datetime
   }
@@ -155,7 +157,23 @@ erDiagram
     created_at datetime
   }
 
-  Favorites {
+  Bookmarks {
+    id integer PK
+    user_id integer FK
+    name string
+    created_at datetime
+    updated_at datetime
+  }
+
+  BookmarkPosts {
+    id integer PK
+    bookmarks_id integer FK
+    post_id integer FK
+    created_at datetime
+    updated_at datetime
+  }
+
+  Likes {
     id integer PK
     user_id integer FK
     post_id integer FK

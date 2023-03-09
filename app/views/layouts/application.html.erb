@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="emerald">
   <head>
-    <title>Netatube</title>
+    <title>ネタログ</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= favicon_link_tag 'favicon.ico' %>
   </head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= Rails.application.credentials.google[:analytics] %>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', <%= Rails.application.credentials.google[:analytics] %>);
+  </script>
 
   <body>
+    <%= render logged_in? ? 'shared/after_login_header' : 'shared/before_login_header' %>
+    <div class="divider"></div>
+    <%= render 'shared/flash_message' %>
     <%= yield %>
+    <%= render 'shared/drawer' if logged_in? %>
+    <%= render 'shared/footer' unless logged_in? %>
   </body>
 </html>

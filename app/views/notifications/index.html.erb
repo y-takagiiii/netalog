@@ -1,0 +1,31 @@
+<div class="flex justify-center">
+  <div class="overflow-x-auto">
+    <table class="table w-full">
+      <thead>
+        <tr>
+          <th>日付</th>
+          <th>お知らせ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @notifications.each do |notice| %>
+          <tr class="hover" data-href>
+            <th><%= l notice.updated_at, format: :short %></th>
+            <td><%= notice.title %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  const tr = document.querySelectorAll('tr[data-href]')
+  tr.forEach(function(el) {
+    el.onclick = function(e) {
+      const clickedElement = e.target
+      const href = clickedElement.dataset.href
+      location.href = "<%= notification_path(2) %>"
+    }
+  })
+</script>

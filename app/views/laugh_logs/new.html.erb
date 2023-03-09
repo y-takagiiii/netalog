@@ -1,0 +1,55 @@
+<div class="flex flex-col items-center">
+  <div class="my-3" id="player"></div>
+  <span><%#= @video.title %></span>
+  <%= button_tag class: "my-1 w-20 h-20 rounded-full bg-amber-500", id: "laugh-button" do %>
+    <i class="fa-solid fa-hands-clapping fa-3x"></i>
+  <% end %>
+
+  <%= form_with model: @laugh_log, class: "my-3" do |f| %>
+    <%= f.hidden_field :laugh_log_time, id: 'laugh-log-time' %>
+    <%= hidden_field_tag :video_id, @video.id %>
+    <%= f.submit 'ログを作成する', class: "btn btn-sm" %>
+  <% end %>
+</div>
+
+
+  <%# <div data-controller="laugh-log">
+    <button data-action="click->laugh-log#click">テスト</button>
+    <div data-action="click->laugh-log#element_get">
+      <button data-laugh-log-target="get">要素を取得</button>
+    </div>
+  </div> %>
+
+
+
+<script>
+  // IFrame Player API の読み込みタグを挿入
+  const tag = document.createElement('script')
+  tag.src = "https://www.youtube.com/iframe_api"
+  const firstScriptTag = document.getElementsByTagName('script')[0]
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+
+  // 関数onYouTubeIframeAPIReadyでiframeとYoutubeプレイヤーを作成
+  let player
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      videoId: '<%= @video.youtube_id %>',
+      height: '576',
+      width: '1024', // アスペクト比16:9 1280:720 1024:576 896:504 768:432 640:360
+      playerVars: {
+        // list: ,
+        rel: 0,
+        fs: 0,
+        modestbranding: 1
+      },
+    })
+  }
+
+  // 動画の操作
+  const laughButton = document.getElementById('laugh-button')
+  let buttonPressedTime = []
+  laughButton.addEventListener('click',() => {
+    buttonPressedTime.push(player.getCurrentTime())
+    document.getElementById("laugh-log-time").value = buttonPressedTime
+  })
+</script>
