@@ -89,6 +89,7 @@ group :development do
   gem 'annotate', '~> 3.2'
   gem 'better_errors', '~> 2.9', '>= 2.9.1'
   gem 'binding_of_caller', '~> 1.0'
+  gem 'brakeman', '~> 5.4'
 end
 
 group :test do
