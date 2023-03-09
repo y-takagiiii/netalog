@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   resources :posts, only: %i[index show destroy] do
     resource :likes, only: %i[create destroy]
   end
+  resources :likes, only: :index
   resources :notifications, only: %i[index show]
 end
