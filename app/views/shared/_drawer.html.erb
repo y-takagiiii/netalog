@@ -9,7 +9,9 @@
         <a href="/search"><i class="fa-brands fa-youtube"></i>ネタを探す</a>
       </li>
       <li>
-        <a href="#"><i class="fa-regular fa-thumbs-up fa-xl"></i>いいねした投稿</a>
+        <%= link_to likes_path do %>
+          <i class="fa-regular fa-thumbs-up fa-xl"></i>いいねした投稿
+        <% end %>
       </li>
       <li>
         <div>
