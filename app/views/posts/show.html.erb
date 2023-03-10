@@ -4,12 +4,11 @@
       <p>投稿者 <%= @post.user.name %></p>
       <p><%= @post.count_button_pressed_times %>笑い</p>
     </div>
-    <figure>
+    <figure class="flex justify-between" >
+      <div id="clapp-icon_left" class="opacity-0 mr-3"><i class="fa-solid fa-hands-clapping fa-4x"></i></div>
       <div class="my-3" id="player"></div>
+      <div id="clapp-icon_right" class="opacity-0 ml-3"><i class="fa-solid fa-hands-clapping fa-4x"></i></div>
     </figure>
-    <div class="flex justify-center">
-      <div id="clapp-icon" class="opacity-0"><i class="fa-solid fa-hands-clapping"></i></div>
-    </div>
     <div class="card-body">
       <h2 class="card-title">
         <%= @post.video.title %>
@@ -59,7 +58,8 @@
     buttonPressedTime.push('<%= log.button_pressed_time.floor(1) %>')
   <% end %>
 
-  const clapp_icon = document.getElementById('clapp-icon')
+  const clapp_icon_left = document.getElementById('clapp-icon_left')
+  const clapp_icon_right = document.getElementById('clapp-icon_right')
 
   let timerId
   function onPlayerStateChange(e) {
@@ -71,10 +71,12 @@
         const passedTime = player.getCurrentTime().toFixed(1)
         if (buttonPressedTime.includes(passedTime)) {
           setTimeout(() => {
-            clapp_icon.className = "opacity-1"
+            clapp_icon_left.className = "opacity-1 mr-3"
+            clapp_icon_right.className = "opacity-1 ml-3"
           })
           setTimeout(() => {
-            clapp_icon.className = "opacity-0"
+            clapp_icon_left.className = "opacity-0 mr-3"
+            clapp_icon_right.className = "opacity-0 ml-3"
           }, 1000)
         }
       }, 100)
