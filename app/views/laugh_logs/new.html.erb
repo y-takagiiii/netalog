@@ -1,7 +1,6 @@
 <div class="flex flex-col items-center">
   <div class="my-3" id="player"></div>
-  <span><%#= @video.title %></span>
-  <%= button_tag class: "my-1 w-20 h-20 rounded-full bg-amber-500", id: "laugh-button" do %>
+  <%= button_tag class: "my-1 w-20 h-20 rounded-full bg-amber-500 shadow-[0_6px_6px_-1px_rgba(0,0,0,1)]", id: "laugh-button" do %>
     <i class="fa-solid fa-hands-clapping fa-3x"></i>
   <% end %>
 
@@ -12,15 +11,12 @@
   <% end %>
 </div>
 
-
   <%# <div data-controller="laugh-log">
     <button data-action="click->laugh-log#click">テスト</button>
     <div data-action="click->laugh-log#element_get">
       <button data-laugh-log-target="get">要素を取得</button>
     </div>
   </div> %>
-
-
 
 <script>
   // IFrame Player API の読み込みタグを挿入
@@ -51,5 +47,12 @@
   laughButton.addEventListener('click',() => {
     buttonPressedTime.push(player.getCurrentTime())
     document.getElementById("laugh-log-time").value = buttonPressedTime
+  })
+
+  laughButton.addEventListener('click',() => {
+    laughButton.className = "my-1 w-20 h-20 rounded-full bg-amber-500"
+    setTimeout(() => {
+      laughButton.className = "my-1 w-20 h-20 rounded-full bg-amber-500 shadow-[0_6px_6px_-1px_rgba(0,0,0,1)]"
+    }, 100)
   })
 </script>
