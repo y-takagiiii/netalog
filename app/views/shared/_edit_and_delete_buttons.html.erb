@@ -3,6 +3,6 @@
     <%= link_to '編集', '#' %>
   </div>
   <div class="badge badge-outline">
-    <%= button_to '削除', post_path(post), method: :delete %>
+    <%= link_to '削除', post_path(post), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
   </div>
 </div>
