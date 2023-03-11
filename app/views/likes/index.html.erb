@@ -21,25 +21,10 @@
               <div class="badge badge-outline">タグ２</div>
             </div>
             <% if current_user.own?(liked_post) %>
-              <div class="card-actions mt-3 justify-end">
-                <div class="badge badge-outline">
-                  <%= link_to '編集', '#' %>
-                </div>
-                <div class="badge badge-outline">
-                  <%= button_to '削除', post_path(liked_post), method: :delete, form: { data: { turbo_confirm: "削除しますか？" } } %>
-                </div>
-              </div>
+              <%= render 'shared/edit_and_delete_buttons', post: liked_post %>
             <% else %>
               <div class="flex">
-                <% if current_user.like?(liked_post) %>
-                  <%= button_to post_likes_path(liked_post), method: :delete do %>
-                    <i class="fa-solid fa-thumbs-up fa-xl"></i>
-                  <% end %>
-                <% else %>
-                  <%= button_to post_likes_path(liked_post), method: :post do %>
-                    <i class="fa-regular fa-thumbs-up fa-xl"></i>
-                  <% end %>
-                <% end %>
+                <%= render 'shared/like_button', post: liked_post %>
               </div>
             <% end %>
           </div>

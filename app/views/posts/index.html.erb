@@ -6,7 +6,7 @@
           <p><%= post.count_button_pressed_times %>笑い</p>
         </div>
         <figure>
-          <%= link_to image_tag(post.video.thumbnail, class: "w-fit"), post_path(post) %>
+          <%= link_to image_tag(post.video.thumbnail, class: "w-fit"), post_path(post), data: { turbo: false } %>
         </figure>
         <div class="card-body h-56 justify-between">
           <h2 class="card-title text-base">
@@ -21,25 +21,10 @@
               <div class="badge badge-outline">タグ２</div>
             </div>
             <% if current_user.own?(post) %>
-              <div class="card-actions mt-3 justify-end">
-                <div class="badge badge-outline">
-                  <%= link_to '編集', '#' %>
-                </div>
-                <div class="badge badge-outline">
-                  <%= button_to '削除', post_path(post), method: :delete %>
-                </div>
-              </div>
+              <%= render 'shared/edit_and_delete_buttons', post: post %>
             <% else %>
               <div class="flex">
-                <% if current_user.like?(post) %>
-                  <%= button_to post_likes_path(post), method: :delete do %>
-                    <i class="fa-solid fa-thumbs-up fa-xl"></i>
-                  <% end %>
-                <% else %>
-                  <%= button_to post_likes_path(post), method: :post do %>
-                    <i class="fa-regular fa-thumbs-up fa-xl"></i>
-                  <% end %>
-                <% end %>
+                <%= render 'shared/like_button', post: post %>
               </div>
             <% end %>
           </div>
