@@ -2,8 +2,8 @@
     <% @posts.each do |post| %>
       <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1.5">
         <div class="flex justify-between">
-          <p>投稿者 <%= post.user.name %></p>
-          <p><%= post.count_button_pressed_times %>笑い</p>
+          <p class="ml-1">投稿者 <%= post.user.name %></p>
+          <p class="mr-1"><%= post.count_button_pressed_times %>笑い</p>
         </div>
         <figure>
           <%= link_to image_tag(post.video.thumbnail, class: "w-fit"), post_path(post), data: { turbo: false } %>
@@ -23,8 +23,10 @@
             <% if current_user.own?(post) %>
               <%= render 'shared/edit_and_delete_buttons', post: post %>
             <% else %>
-              <div class="flex">
-                <%= render 'shared/like_button', post: post %>
+              <div class="card-actions justify-around mt-2">
+                <div><%= render 'shared/like_button', post: post %></div>
+                <div class="mt-1"><i class="fa-regular fa-bookmark fa-xl"></i></div>
+                <div class="mt-1"><i class="fa-regular fa-share-from-square fa-xl"></i></div>
               </div>
             <% end %>
           </div>

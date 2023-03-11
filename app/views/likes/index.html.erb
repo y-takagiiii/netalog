@@ -23,8 +23,14 @@
             <% if current_user.own?(liked_post) %>
               <%= render 'shared/edit_and_delete_buttons', post: liked_post %>
             <% else %>
-              <div class="flex">
-                <%= render 'shared/like_button', post: liked_post %>
+              <div class="card-actions justify-around mt-2">
+                <div><%= render 'shared/like_button', post: liked_post %></div>
+                <div class="mt-1">
+                  <i class="fa-regular fa-bookmark fa-xl"></i>
+                </div>
+                <div class="mt-1">
+                  <i class="fa-regular fa-share-from-square fa-xl"></i>
+                </div>
               </div>
             <% end %>
           </div>
@@ -33,5 +39,5 @@
     <% end %>
   </div>
   <div class="flex justify-center my-5">
-    <%#== pagy_nav(@pagy) %>
+    <%== pagy_nav(@pagy) %>
   </div>

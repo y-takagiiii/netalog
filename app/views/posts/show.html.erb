@@ -1,8 +1,8 @@
 <div class="container mx-auto my-3">
   <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1">
     <div class="flex justify-between">
-      <p>投稿者 <%= @post.user.name %></p>
-      <p><%= @post.count_button_pressed_times %>笑い</p>
+      <p class="ml-1">投稿者 <%= @post.user.name %></p>
+      <p class="mr-1"><%= @post.count_button_pressed_times %>笑い</p>
     </div>
     <figure class="flex justify-between" >
       <div id="clapp-icon_left" class="opacity-0 mr-3"><i class="fa-solid fa-hands-clapping fa-4x"></i></div>
