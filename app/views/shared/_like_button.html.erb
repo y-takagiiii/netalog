@@ -1,0 +1,11 @@
+<%= turbo_frame_tag post do %>
+  <% if current_user.like?(post) %>
+    <%= button_to post_likes_path(post), method: :delete do %>
+      <i class="fa-solid fa-thumbs-up fa-xl"></i>
+    <% end %>
+  <% else %>
+    <%= button_to post_likes_path(post), method: :post do %>
+      <i class="fa-regular fa-thumbs-up fa-xl"></i>
+    <% end %>
+  <% end %>
+<% end %>
