@@ -18,7 +18,7 @@
     <% @searched_videos.each do |searched_video| %>
       <div class="card card-side flex bg-base-100 shadow-xl mt-3">
         <figure>
-          <%= link_to new_laugh_log_path(searched_video) do %>
+          <%= link_to new_laugh_log_path(searched_video), data: { turbo: false } do %>
             <div class="h-48 w-88">
               <%= image_tag(searched_video[:thumbnail], class: "w-full h-full") %>
             </div>

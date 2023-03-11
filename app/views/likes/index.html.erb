@@ -1,54 +1,53 @@
   <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 place-items-center mx-3">
+  <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1.5">
     <% if @liked_posts.blank? %>
       <p class>いいねした投稿はありません。</p>
     <% else %>
       <% @liked_posts.each do |liked_post| %>
-        <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1.5">
-          <div class="flex justify-between">
-            <p>投稿者 <%= liked_post.user.name %></p>
-            <p><%= liked_post.count_button_pressed_times %>笑い</p>
-          </div>
-          <figure>
-            <%= link_to image_tag(liked_post.video.thumbnail, class: "w-fit"), post_path(liked_post) %>
-          </figure>
-          <div class="card-body h-56 justify-between">
-            <h2 class="card-title text-base">
-              <%= liked_post.video.title.truncate(40) %>
-              <% if liked_post.new? %>
-                <div class="badge badge-secondary">NEW</div>
-              <% end %>
-            </h2>
-            <div>
-              <div class="card-actions justify-end">
-                <div class="badge badge-outline">タグ1</div>
-                <div class="badge badge-outline">タグ２</div>
-              </div>
-              <% if current_user.own?(liked_post) %>
-                <div class="card-actions mt-3 justify-end">
-                  <div class="badge badge-outline">
-                    <%= link_to '編集', '#' %>
-                  </div>
-                  <div class="badge badge-outline">
-                    <%= button_to '削除', post_path(liked_post), method: :delete, form: { data: { turbo_confirm: "削除しますか？" } } %>
-                  </div>
-                </div>
-              <% else %>
-                <div class="flex">
-                  <% if current_user.like?(liked_post) %>
-                    <%= button_to post_likes_path(liked_post), method: :delete do %>
-                      <i class="fa-solid fa-thumbs-up fa-xl"></i>
-                    <% end %>
-                  <% else %>
-                    <%= button_to post_likes_path(liked_post), method: :post do %>
-                      <i class="fa-regular fa-thumbs-up fa-xl"></i>
-                    <% end %>
-                  <% end %>
-                </div>
-              <% end %>
+        <div class="flex justify-between">
+          <p>投稿者 <%= liked_post.user.name %></p>
+          <p><%= liked_post.count_button_pressed_times %>笑い</p>
+        </div>
+        <figure>
+          <%= link_to image_tag(liked_post.video.thumbnail, class: "w-fit"), post_path(liked_post) %>
+        </figure>
+        <div class="card-body h-56 justify-between">
+          <h2 class="card-title text-base">
+            <%= liked_post.video.title.truncate(40) %>
+            <% if liked_post.new? %>
+              <div class="badge badge-secondary">NEW</div>
+            <% end %>
+          </h2>
+          <div>
+            <div class="card-actions justify-end">
+              <div class="badge badge-outline">タグ1</div>
+              <div class="badge badge-outline">タグ２</div>
             </div>
+            <% if current_user.own?(liked_post) %>
+              <div class="card-actions mt-3 justify-end">
+                <div class="badge badge-outline">
+                  <%= link_to '編集', '#' %>
+                </div>
+                <div class="badge badge-outline">
+                  <%= button_to '削除', post_path(liked_post), method: :delete, form: { data: { turbo_confirm: "削除しますか？" } } %>
+                </div>
+              </div>
+            <% else %>
+              <div class="flex">
+                <% if current_user.like?(liked_post) %>
+                  <%= button_to post_likes_path(liked_post), method: :delete do %>
+                    <i class="fa-solid fa-thumbs-up fa-xl"></i>
+                  <% end %>
+                <% else %>
+                  <%= button_to post_likes_path(liked_post), method: :post do %>
+                    <i class="fa-regular fa-thumbs-up fa-xl"></i>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         </div>
-      <% end %>
+      </div>
     <% end %>
   </div>
   <div class="flex justify-center my-5">

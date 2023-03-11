@@ -8,12 +8,20 @@ class LikesController < ApplicationController
   def create
     post = Post.find(params[:post_id])
     current_user.like(post)
-    redirect_to posts_path
+    render turbo_stream: turbo_stream.replace(
+      post,
+      partial: 'shared/like_button',
+      locals: { post: post }
+    )
   end
 
   def destroy
     post = Post.find(params[:post_id])
     current_user.unlike(post)
-    redirect_to posts_path
+    render turbo_stream: turbo_stream.replace(
+      post,
+      partial: 'shared/like_button',
+      locals: { post: post }
+    )
   end
 end
