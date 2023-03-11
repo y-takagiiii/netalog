@@ -64,10 +64,11 @@ gem 'enum_help', '~> 0.0.19'
 gem 'pagy', '~> 6.0'
 
 # site_map
-gem 'meta_tags', '~> 0.3.0'
+gem 'meta-tags', '~> 2.18'
+
 
 # decorator
-gem 'draper', '~> 4.0'
+# gem 'draper', '~> 4 .0'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
