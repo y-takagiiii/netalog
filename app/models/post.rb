@@ -32,4 +32,8 @@ class Post < ApplicationRecord
   def count_button_pressed_times
     laugh_logs.count
   end
+
+  def like_count
+    likes.count
+  end
 end
