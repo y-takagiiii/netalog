@@ -30,9 +30,9 @@
 @tailwind utilities;
 
 #clapp-icon_left {
-	transition: opacity 0.5s 0s ease-in-out;
+	transition: opacity 0.3s 0s ease-in-out;
 }
 
 #clapp-icon_right {
-	transition: opacity 0.5s 0s ease-in-out;
+	transition: opacity 0.3s 0s ease-in-out;
 }
