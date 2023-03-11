@@ -2,7 +2,7 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'ネタログ',
-      title: 'タイトル',
+      title: 'ネタログ',
       reverse: true,
       separator: '|',
       description: 'ページの説明',
