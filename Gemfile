@@ -93,6 +93,7 @@ group :development do
   gem 'better_errors', '~> 2.9', '>= 2.9.1'
   gem 'binding_of_caller', '~> 1.0'
   gem 'brakeman', '~> 5.4'
+  gem 'letter_opener_web', '~> 2.0'
 end
 
 group :test do

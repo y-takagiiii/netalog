@@ -16,7 +16,7 @@ class GoogleLoginsController < ApplicationController
       create_user_from(provider) unless (@user = login_form(provider))
       redirect_to posts_path, success: "#{provider.titleize}アカウントでログインしました"
     rescue StandardError
-      redirect_to login_path, danger: "#{provider.titleize}アカウントでのログインに失敗しました"
+      redirect_to login_path, error: "#{provider.titleize}アカウントでのログインに失敗しました"
     end
   end
 

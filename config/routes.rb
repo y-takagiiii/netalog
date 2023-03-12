@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   root 'tops#index'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
@@ -19,4 +20,5 @@ Rails.application.routes.draw do
   end
   resources :likes, only: :index
   resources :notifications, only: %i[index show]
+  resources :password_resets, only: %i[new create edit update]
 end

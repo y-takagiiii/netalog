@@ -167,6 +167,15 @@ GEM
       railties (>= 6.0.0)
     json (2.6.3)
     jwt (2.7.0)
+    launchy (2.5.2)
+      addressable (~> 2.8)
+    letter_opener (1.8.1)
+      launchy (>= 2.2, < 3)
+    letter_opener_web (2.0.0)
+      actionmailer (>= 5.2)
+      letter_opener (~> 1.7)
+      railties (>= 5.2)
+      rexml
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -381,6 +390,7 @@ DEPENDENCIES
   google-api-client (~> 0.53.0)
   jbuilder
   jsbundling-rails
+  letter_opener_web (~> 2.0)
   meta-tags (~> 2.18)
   pagy (~> 6.0)
   pg (~> 1.1)
