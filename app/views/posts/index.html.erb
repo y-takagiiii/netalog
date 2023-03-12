@@ -2,11 +2,11 @@
     <% @posts.each do |post| %>
       <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1.5">
         <div class="flex justify-between">
-          <p>投稿者 <%= post.user.name %></p>
-          <p><%= post.count_button_pressed_times %>笑い</p>
+          <p class="ml-1">投稿者 <%= post.user.name %></p>
+          <p class="mr-1"><%= post.count_button_pressed_times %>笑い</p>
         </div>
         <figure>
-          <%= link_to image_tag(post.video.thumbnail, class: "w-fit"), post_path(post) %>
+          <%= link_to image_tag(post.video.thumbnail, class: "w-fit"), post_path(post), data: { turbo: false } %>
         </figure>
         <div class="card-body h-56 justify-between">
           <h2 class="card-title text-base">
@@ -21,23 +21,12 @@
               <div class="badge badge-outline">タグ２</div>
             </div>
             <% if current_user.own?(post) %>
-              <div class="card-actions mt-3 justify-end">
-                <div class="badge badge-outline">編集</div>
-                <div class="badge badge-outline">
-                  <%= button_to '削除', post_path(post), method: :delete %>
-                </div>
-              </div>
+              <%= render 'shared/edit_and_delete_buttons', post: post %>
             <% else %>
-              <div class="flex">
-                <% if current_user.like?(post) %>
-                  <%= button_to post_likes_path(post), method: :delete do %>
-                    <i class="fa-solid fa-thumbs-up fa-xl"></i>
-                  <% end %>
-                <% else %>
-                  <%= button_to post_likes_path(post), method: :post do %>
-                    <i class="fa-regular fa-thumbs-up fa-xl"></i>
-                  <% end %>
-                <% end %>
+              <div class="card-actions justify-around mt-2">
+                <div><%= render 'shared/like_button', post: post %></div>
+                <div class="mt-1"><i class="fa-regular fa-bookmark fa-xl"></i></div>
+                <div class="mt-1"><i class="fa-regular fa-share-from-square fa-xl"></i></div>
               </div>
             <% end %>
           </div>

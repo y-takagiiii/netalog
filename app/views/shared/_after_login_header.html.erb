@@ -11,7 +11,7 @@
           <%= link_to 'ネタログ', posts_path, class: "font-bold text-xl" %>
         </div>
 
-        <div class="navbar-end">
+        <div class="navbar-end" ontouchstart="">
           <div class="dropdown dropdown-hover dropdown-end">
             <label tabindex="0" class="btn m-1 btn-ghost btn-circle avatar">
               <div class="w-10 rounded-full">
@@ -30,12 +30,15 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to notifications_path do %>
+                <a href="#">
                   <i class="fa-regular fa-bell mr-1"></i>お知らせ
-                  <% if @notification.updated_at > Time.current.weeks_ago(1) %>
-                    <span class="badge">New</span>
-                  <% end %>
-                <% end %>
+                </a>
+                <%#= link_to notifications_path do %>
+                  <%# if @notification.updated_at > Time.current.weeks_ago(1) %>
+                  <%# <i class="fa-regular fa-bell mr-1"></i>お知らせ %>
+                    <%# <span class="badge">New</span> %>
+                  <%# end %>
+                <%# end %>
               </li>
             </ul>
           </div>
