@@ -20,7 +20,6 @@ class Video < ApplicationRecord
     validates :search_word
     validates :youtube_id
     validates :title
-    validates :description
     validates :thumbnail
     validates :view_count
   end
