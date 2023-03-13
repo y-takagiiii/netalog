@@ -1,0 +1,8 @@
+<div class="card-actions mt-2 justify-around">
+    <%= link_to '#'  do %>
+      <i class="fa-solid fa-pen-to-square"></i>編集
+    <% end %>
+    <%= link_to  post_path(post), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } do %>
+      <i class="fa-solid fa-trash"></i>削除
+    <% end %>
+</div>
