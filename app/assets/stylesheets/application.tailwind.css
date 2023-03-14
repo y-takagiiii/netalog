@@ -29,10 +29,10 @@
 @tailwind components;
 @tailwind utilities;
 
-#clapp-icon_left {
+#clap-icon-left {
 	transition: opacity 0.3s 0s ease-in-out;
 }
 
-#clapp-icon_right {
+#clap-icon-right {
 	transition: opacity 0.3s 0s ease-in-out;
 }
