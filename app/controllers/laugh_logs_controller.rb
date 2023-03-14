@@ -2,6 +2,7 @@ class LaughLogsController < ApplicationController
   def new
     @video = Video.find(params[:id])
     @laugh_log = LaughLog.new
+    @post = Post.find(params[:post_id]) if params[:post_id]
   end
 
   def create

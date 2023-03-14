@@ -21,12 +21,23 @@
               <div class="badge badge-outline">タグ２</div>
             </div>
             <% if current_user.own?(post) %>
-              <%= render 'shared/edit_and_delete_buttons', post: post %>
+              <%= render 'shared/own_post_menus', post: post %>
             <% else %>
               <div class="card-actions justify-around mt-2">
                 <div><%= render 'shared/like_button', post: post %></div>
-                <div class="mt-1"><i class="fa-regular fa-bookmark fa-xl"></i></div>
-                <div class="mt-1"><i class="fa-regular fa-share-from-square fa-xl"></i></div>
+                <div class="mt-1">
+                  <div class="dropdown dropdown-top dropdown-end">
+                    <label tabindex="0">
+                      <i class="fa-solid fa-list fa-xl"></i>
+                    </label>
+                    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                      <li>
+                        <a href="#">プレイリスト1</a>
+                        <a href="#">プレイリスト2</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             <% end %>
           </div>
