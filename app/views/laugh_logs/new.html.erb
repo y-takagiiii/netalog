@@ -1,5 +1,9 @@
 <div class="flex flex-col items-center">
-  <div class="my-3" id="player"></div>
+  <div class="flex justify-between" >
+    <div id="clapp-icon_left" class="opacity-0 mr-3"><i class="fa-solid fa-hands-clapping fa-4x"></i></div>
+    <div class="my-3" id="player"></div>
+    <div id="clapp-icon_right" class="opacity-0 ml-3"><i class="fa-solid fa-hands-clapping fa-4x"></i></div>
+  </div>
   <%= button_tag class: "my-1 w-20 h-20 rounded-full bg-amber-500 shadow-[0_6px_6px_-1px_rgba(0,0,0,1)]", id: "laugh-button" do %>
     <i class="fa-solid fa-hands-clapping fa-3x"></i>
   <% end %>
@@ -10,13 +14,6 @@
     <%= f.submit 'ログを作成する', class: "btn btn-sm" %>
   <% end %>
 </div>
-
-  <%# <div data-controller="laugh-log">
-    <button data-action="click->laugh-log#click">テスト</button>
-    <div data-action="click->laugh-log#element_get">
-      <button data-laugh-log-target="get">要素を取得</button>
-    </div>
-  </div> %>
 
 <script>
   // IFrame Player API の読み込みタグを挿入
@@ -36,8 +33,11 @@
         // list: ,
         rel: 0,
         fs: 0,
-        modestbranding: 1
+        modestbranding: 1,
       },
+      events: {
+        'onStateChange': onPlayerStateChange
+      }
     })
   }
 
@@ -55,4 +55,40 @@
       laughButton.className = "my-1 w-20 h-20 rounded-full bg-amber-500 shadow-[0_6px_6px_-1px_rgba(0,0,0,1)]"
     }, 100)
   })
+
+  <% if @post %>
+    let originalButtonPressedTime = []
+    <% @post.laugh_logs.each do |log| %>
+      originalButtonPressedTime.push('<%= log.button_pressed_time.floor(1) %>')
+    <% end %>
+
+    console.log(originalButtonPressedTime)
+  <% end %>
+
+  const clapp_icon_left = document.getElementById('clapp-icon_left')
+  const clapp_icon_right = document.getElementById('clapp-icon_right')
+
+  let timerId
+  function onPlayerStateChange(e) {
+    if (timerId) {
+      clearInterval(timerId)
+    }
+    if (e.data == YT.PlayerState.PLAYING) {
+      timerId = setInterval(() => {
+        const passedTime = player.getCurrentTime().toFixed(1)
+        if (originalButtonPressedTime.includes(passedTime)) {
+          setTimeout(() => {
+            clapp_icon_left.className = "opacity-1 mr-3"
+            clapp_icon_right.className = "opacity-1 ml-3"
+          })
+          setTimeout(() => {
+            clapp_icon_left.className = "opacity-0 mr-3"
+            clapp_icon_right.className = "opacity-0 ml-3"
+          }, 500)
+        }
+      }, 100)
+    } else {
+      clearInterval(timerId)
+    }
+  }
 </script>
