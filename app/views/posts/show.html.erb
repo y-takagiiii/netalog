@@ -23,11 +23,11 @@
         <%= render 'shared/own_post_menus', post: @post %>
       <% else %>
         <div class="card-actions justify-around mt-2">
-          <div><%= render 'shared/like_button', post: @post %></div>
+          <div class="mt-1"><%= render 'shared/like_button', post: @post %></div>
           <div class="mt-1">
             <div class="dropdown dropdown-top dropdown-end">
               <label tabindex="0">
-                <i class="fa-regular fa-bookmark fa-xl"></i>
+                <i class="fa-solid fa-list fa-xl"></i>
               </label>
               <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                 <li>
@@ -36,6 +36,11 @@
                 </li>
               </ul>
             </div>
+          </div>
+          <div class="mt-1">
+            <%= link_to  new_laugh_log_path(@post.video_id, post_id: @post.id ), data: { turbo: false } do %>
+              <i class="fa-regular fa-square-plus fa-xl"></i>
+            <% end %>
           </div>
         </div>
       <% end %>
