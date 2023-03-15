@@ -1,0 +1,2 @@
+class PlayListsController < ApplicationController
+end
