@@ -31,23 +31,28 @@
       <% else %>
       <div class="card-actions justify-around mt-2">
         <div class="mt-1"><%= render 'shared/like_button', post: @post %></div>
-        <div class="mt-1">
+        <div class="mt-2">
           <div class="dropdown dropdown-top dropdown-end">
             <label tabindex="0">
               <i class="fa-solid fa-list fa-xl"></i>
             </label>
             <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
               <li>
-                <a href="#">プレイリスト1</a>
-                <a href="#">プレイリスト2</a>
+                <a href="#">プレイリスト1に追加</a>
+                <a href="#">プレイリスト2に追加</a>
               </li>
             </ul>
           </div>
         </div>
-        <div class="mt-1">
-          <%= link_to  new_laugh_log_path(@post.video_id, post_id: @post.id ), data: { turbo: false } do %>
-            <i class="fa-regular fa-square-plus fa-xl"></i>
-          <% end %>
+        <div class="mt-1.5">
+          <div class="dropdown dropdown-hover dropdown-top dropdown-end">
+            <%= link_to  new_laugh_log_path(@post.video_id, post_id: @post.id ), data: { turbo: false } do %>
+              <i class="fa-solid fa-hands-clapping fa-xl"></i>
+            <% end %>
+            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+              <li>この動画でログを作る</li>
+            </ul>
+          </div>
         </div>
       </div>
     <% end %>
