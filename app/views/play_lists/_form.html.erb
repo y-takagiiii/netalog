@@ -1,0 +1,4 @@
+<%= form_with model: @playlist, id: 'play-list-form' do |f| %>
+  <%= f.text_field :name, class: "input input-bordered w-full max-w-xs", placeholder: "プレイリスト名を入力" %>
+  <%= f.submit "作成", class: "btn btn-sm" %>
+<% end %>
