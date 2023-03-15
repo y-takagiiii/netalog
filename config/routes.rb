@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resource :likes, only: %i[create destroy]
   end
   resources :likes, only: :index
+  resources :play_lists
   resources :notifications, only: %i[index show]
   resources :password_resets, only: %i[new create edit update]
 end
