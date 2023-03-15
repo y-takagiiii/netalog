@@ -40,7 +40,6 @@ erDiagram
     id integer PK
     user_id integer FK
     video_id integer FK
-    button_pressed_time integer
     created_at datetime
     updated_at datetime
   }
