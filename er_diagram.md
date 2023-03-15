@@ -109,7 +109,7 @@ erDiagram
 
   PlayListPosts {
     id integer PK
-    bookmarks_id integer FK
+    play_list_id integer FK
     post_id integer FK
     created_at datetime
     updated_at datetime
