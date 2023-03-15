@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_08_072738) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_15_060604) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,6 +39,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_072738) do
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id", "post_id"], name: "index_likes_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "play_list_posts", force: :cascade do |t|
+    t.bigint "play_list_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["play_list_id", "post_id"], name: "index_play_list_posts_on_play_list_id_and_post_id", unique: true
+    t.index ["play_list_id"], name: "index_play_list_posts_on_play_list_id"
+    t.index ["post_id"], name: "index_play_list_posts_on_post_id"
+  end
+
+  create_table "play_lists", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_play_lists_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -81,6 +99,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_072738) do
   add_foreign_key "laugh_logs", "posts"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
+  add_foreign_key "play_list_posts", "play_lists"
+  add_foreign_key "play_list_posts", "posts"
+  add_foreign_key "play_lists", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "posts", "videos"
 end
