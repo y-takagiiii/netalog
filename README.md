@@ -61,9 +61,9 @@ erDiagram
 	Posts ||--|{ LaughLogs : ""
   Users ||--o{ Likes : ""
   Posts ||--o{ Likes : ""
-  Users ||--o{ Bookmarks : ""
-  Bookmarks }o--|| BookmarkPosts : ""
-  Posts ||--o{ BookmarkPosts : ""
+  Users ||--o{ PlayLists : ""
+  PlayLists }o--|| PlayListPosts : ""
+  Posts ||--o{ PlayListPosts : ""
   Users ||--o{ Inquiries : ""
   Inquiries }|--|| InquiryItems : ""
   Users ||--o{ FollowRelationships : ""
@@ -93,7 +93,6 @@ erDiagram
     id integer PK
     user_id integer FK
     video_id integer FK
-    button_pressed_time integer
     created_at datetime
     updated_at datetime
   }
@@ -153,7 +152,7 @@ erDiagram
     created_at datetime
   }
 
-  Bookmarks {
+  PlayLists {
     id integer PK
     user_id integer FK
     name string
@@ -161,7 +160,7 @@ erDiagram
     updated_at datetime
   }
 
-  BookmarkPosts {
+  PlayListPosts {
     id integer PK
     bookmarks_id integer FK
     post_id integer FK
