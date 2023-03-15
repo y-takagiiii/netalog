@@ -19,8 +19,11 @@
           <div class="dropdown dropdown-hover">
             <label tabindex="0">プレイリスト</label>
             <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-              <li><a>プレイリスト1</a></li>
-              <li><a>プレイリスト2</a></li>
+              <li>
+                <%= link_to '新規プレイリスト作成', new_play_list_path %>
+              </li>
+                <li><a>プレイリスト1</a></li>
+                <li><a>プレイリスト2</a></li>
             </ul>
           </div>
         </div>
