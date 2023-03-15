@@ -21,10 +21,12 @@
               <div class="badge badge-outline">タグ２</div>
             </div>
             <% if current_user.own?(post) %>
-              <%= render 'shared/own_post_menus', post: post %>
+              <div class="card-actions mt-2 justify-around">
+                <%= render 'shared/own_post_menus', post: post %>
+              </div>
             <% else %>
               <div class="card-actions justify-around mt-2">
-                <div><%= render 'shared/like_button', post: post %></div>
+                <%= render 'shared/like_button', post: post %>
                 <div class="mt-1">
                   <div class="dropdown dropdown-top dropdown-end">
                     <label tabindex="0">
