@@ -11,15 +11,41 @@
     <%= link_to '使ってみる', try_it_path, role: "button", class: "btn btn-sm btn-secondary" %>
   </div>
   <div>
-    <%# <div class="text-lg text-center my-3">使い方</div>
+    <div class="text-lg text-center my-3">使い方</div>
     <div class="grid grid-cols-3 gap-y-2">
-      <div class="col-span-1 bg-gray-100">イメージ画像1</div>
-      <div class="col-span-2 bg-blue-100">動画を探す</div>
-      <div class="col-span-2 bg-amber-100">動画を見ながら拍手ボタンを押す</div>
-      <div class="col-span-1 bg-red-100">イメージ画像2</div>
-      <div class="col-span-1 bg-orange-100">投稿する</div>
-      <div class="col-span-2 bg-yellow-100">イメージ画像</div>
-    </div> %>
+      <div class="col-span-1 bg-gray-100">
+        <%= image_tag('netalog_step1.gif') %>
+      </div>
+      <div class="col-span-2 bg-blue-100">
+        <p>STEP1</p>
+        <p>サイドバーから動画を検索する</p>
+      </div>
+      <div class="col-span-2 bg-amber-100">
+        <p>STEP2</p>
+        <p>好きな動画を選んで再生する</p>
+      </div>
+      <div class="col-span-1 bg-red-100">
+        <%= image_tag('netalog_step2.gif') %>
+      </div>
+      <div class="col-span-1 bg-orange-100">
+        <%= image_tag('netalog_step3.gif') %>
+      </div>
+      <div class="col-span-2 bg-yellow-100">
+        <p>STEP3</p>
+        <p>オモシロイと思った瞬間で拍手ボタンを押す</p>
+      </div>
+      <div class="col-span-2 bg-emerald-300">
+        <p>STEP4</p>
+        <p>動画を見終わったらログを作成する</p>
+      </div>
+      <div class="col-span-1">
+        <%= image_tag('netalog_step4.gif') %>
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-center my-3">
+    <% logged_in? ? try_it_path = posts_path : try_it_path = new_user_path %>
+    <%= link_to '使ってみる', try_it_path, role: "button", class: "btn btn-sm btn-secondary" %>
   </div>
 </div>
 
