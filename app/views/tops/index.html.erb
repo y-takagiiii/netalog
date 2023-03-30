@@ -2,24 +2,44 @@
   <div class="flex items-center justify-center">
     <div><%= image_tag 'netalog_with_text.png', size: "300x300" %></div>
     <div>
-      <p>笑いのタイミングを共有して</p>
-      <p>楽しい思い出を残そう！</p>
+      <h1 class="xl:text-4xl md:text-3xl sm:text-2xl font-bold">笑いのタイミングを共有して</br>楽しい思い出を残そう！</h1>
     </div>
   </div>
   <div class="flex justify-center">
     <% logged_in? ? try_it_path = posts_path : try_it_path = new_user_path %>
     <%= link_to '使ってみる', try_it_path, role: "button", class: "btn btn-sm btn-secondary" %>
   </div>
-  <div>
-    <%# <div class="text-lg text-center my-3">使い方</div>
-    <div class="grid grid-cols-3 gap-y-2">
-      <div class="col-span-1 bg-gray-100">イメージ画像1</div>
-      <div class="col-span-2 bg-blue-100">動画を探す</div>
-      <div class="col-span-2 bg-amber-100">動画を見ながら拍手ボタンを押す</div>
-      <div class="col-span-1 bg-red-100">イメージ画像2</div>
-      <div class="col-span-1 bg-orange-100">投稿する</div>
-      <div class="col-span-2 bg-yellow-100">イメージ画像</div>
-    </div> %>
+  <div class="mt-5">
+    <div class="grid grid-cols-2 gap-y-2">
+      <div class="col-span-1">
+        <%= image_tag('netalog_step1.gif') %>
+      </div>
+      <div class="col-span-1 flex items-center justify-center">
+        <p class="text-sm md:text-xl">ヘッダーまたはサイドバーから動画を検索する</p>
+      </div>
+      <div class="col-span-1 flex items-center justify-center">
+        <p class="text-sm md:text-xl">好きな動画を選んで再生する</p>
+      </div>
+      <div class="col-span-1">
+        <%= image_tag('netalog_step2.gif') %>
+      </div>
+      <div class="col-span-1">
+        <%= image_tag('netalog_step3.gif') %>
+      </div>
+      <div class="col-span-1 flex items-center justify-center">
+        <p class="text-sm md:text-xl">オモシロイと思った瞬間で拍手ボタンを押す</p>
+      </div>
+      <div class="col-span-1 flex items-center justify-center">
+        <p class="text-sm md:text-xl">動画を見終わったらログを作成する</p>
+      </div>
+      <div class="col-span-1">
+        <%= image_tag('netalog_step4.gif') %>
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-center my-3">
+    <% logged_in? ? try_it_path = posts_path : try_it_path = new_user_path %>
+    <%= link_to '使ってみる', try_it_path, role: "button", class: "btn btn-sm btn-secondary" %>
   </div>
 </div>
 
