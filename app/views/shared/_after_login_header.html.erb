@@ -12,7 +12,14 @@
         </div>
 
         <div class="navbar-end" ontouchstart="">
-          <a href="/search"><i class="fa-solid fa-marker fa-lg"></i> ログを作成</a>
+          <div class="dropdown dropdown-hover dropdown-bottom dropdown-end mr-2">
+            <%= link_to search_path do %>
+              <i class="fa-solid fa-marker fa-xl"></i>
+            <% end %>
+            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+              <li>ログを作成</li>
+            </ul>
+          </div>
           <div class="dropdown dropdown-hover dropdown-end">
             <label tabindex="0" class="btn m-1 btn-ghost btn-circle avatar">
               <div class="w-10 rounded-full">
