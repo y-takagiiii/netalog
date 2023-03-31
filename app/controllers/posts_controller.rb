@@ -14,6 +14,10 @@ class PostsController < ApplicationController
     redirect_to posts_path, success: '投稿を削除しました。'
   end
 
+  def popular
+    @pagy, @popular_posts = pagy(Post.popular.includes([:user, :video]))
+  end
+
   private
 
   def set_post

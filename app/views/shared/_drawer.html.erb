@@ -26,7 +26,11 @@
         </div>
       </li>
       <div class="divider"></div>
-      <li><a href="#"><i class="fa-solid fa-arrow-trend-up"></i>人気の投稿</a></li>
+      <li>
+        <%= link_to popular_posts_path do %>
+          <i class="fa-solid fa-arrow-trend-up"></i>人気の投稿
+        <% end %>
+      </li>
       <div class="divider"></div>
       <li><a href="#"><i class="fa-regular fa-circle-question"></i>ヘルプ</a></li>
       <li>
