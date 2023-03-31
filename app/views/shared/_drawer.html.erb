@@ -20,10 +20,13 @@
             <label tabindex="0">プレイリスト</label>
             <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
               <li>
-                <%= link_to '新規プレイリスト作成', new_play_list_path %>
+                <%= link_to '新規作成', new_play_list_path, data: { turbo_frame: "new_playlist_form" } %>
               </li>
-                <li><a>プレイリスト1</a></li>
-                <li><a>プレイリスト2</a></li>
+              <%= turbo_frame_tag "new_playlist_form" %>
+              <li><a>プレイリスト1</a></li>
+              <li id="play_lists">
+                <%= render partial: "play_lists/play_list", collection: @play_lists %>
+              </li>
             </ul>
           </div>
         </div>
