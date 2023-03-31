@@ -25,6 +25,8 @@ class Post < ApplicationRecord
   has_many :laugh_logs, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+  scope :popular, -> { joins(:likes).group(:id).order('COUNT(likes.id) DESC').limit(10) }
+
   def new?
     created_at > Time.current.yesterday
   end
