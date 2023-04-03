@@ -103,3 +103,7 @@ group :test do
   gem 'capybara', '~> 3.38'
   gem 'simplecov', '~> 0.22.0'
 end
+
+group :production do
+  gem 'aws-sdk-s3', '~> 1.120'
+end
