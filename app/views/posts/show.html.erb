@@ -15,10 +15,10 @@
         <div class="badge badge-secondary">NEW</div>
       </h2>
       <p><%= @post.video.description %></p>
-      <div class="card-actions justify-end">
+      <%# <div class="card-actions justify-end">
         <div class="badge badge-outline">タグ1</div>
         <div class="badge badge-outline">タグ2</div>
-      </div>
+      </div> %>
       <% if current_user.own?(@post) %>
       <div class="card-actions mt-2 justify-around">
         <div>
@@ -47,11 +47,11 @@
         <div class="mt-1.5">
           <div class="dropdown dropdown-hover dropdown-top dropdown-end">
             <%= link_to  new_laugh_log_path(@post.video_id, post_id: @post.id ), data: { turbo: false } do %>
-              <i class="fa-solid fa-hands-clapping fa-xl"></i>
+              <i class="fa-solid fa-marker fa-xl"></i>
+              <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-48">
+                <li>この動画でログを作る</li>
+              </ul>
             <% end %>
-            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-              <li>この動画でログを作る</li>
-            </ul>
           </div>
         </div>
       </div>
