@@ -26,6 +26,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
+  has_one_attached :profile_image
 
   validates :password, length: { minimum: 6 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

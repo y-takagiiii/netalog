@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get 'laugh_logs/new/:id', to: 'laugh_logs#new', as: 'new_laugh_log'
   post 'laugh_logs', to: 'laugh_logs#create'
 
-  resources :users, only: %i[new create destroy]
+  resources :users, only: %i[new create show edit update destroy]
   resources :posts, only: %i[index show destroy] do
     resource :likes, only: %i[create destroy]
     collection do

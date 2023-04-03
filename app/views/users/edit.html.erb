@@ -1,0 +1,36 @@
+<div class="max-w-4xl flex items-center h-auto flex-wrap mx-auto my-32">
+  <div id="profile" class="w-full rounded-lg shadow-2xl bg-white mx-6">
+    <div class="p-4 text-center">
+      <%= form_with model: @user do |f| %>
+        <% if @user.profile_image.attached? %>
+          <%= image_tag @user.profile_image, class: "block rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center" %>
+        <% else %>
+          <%= image_tag 'netalog.png', class: "block rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center" %>
+        <% end %>
+        <div class="pt-2">
+          <%= f.file_field :profile_image, class: "file-input file-input-bordered  file-input-sm" %>
+        </div>
+        <h1 class="text-3xl font-bold pt-8">
+          <%= f.text_field :name, class: "input input-bordered" %>
+        </h1>
+        <div class="divider mx-auto w-4/5 pt-3"></div>
+        <p class="pt-4 text-base flex items-center justify-center">
+          <i class="fa-solid fa-envelope h-4 pr-4"></i>
+          <%= f.email_field :email, class:  "input input-bordered" %>
+        </p>
+        <%# <p class="pt-2 text-gray-600 text-base flex items-center justify-center">
+        <i class="fa-brands fa-youtube h-4 pr-4"></i>
+        好きなジャンル
+        </p>
+        <p class="pt-8 text-sm">
+        自己紹介
+        </p> %>
+
+        <div class="pt-12 pb-8">
+          <%= f.submit '更新', class: 'btn' %>
+          <%= link_to '戻る', user_path(current_user), class: 'btn' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

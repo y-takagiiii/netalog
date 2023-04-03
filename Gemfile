@@ -49,7 +49,7 @@ gem "bootsnap", require: false
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 # authentication
 gem 'sorcery', '~> 0.16.4'
@@ -102,4 +102,8 @@ end
 group :test do
   gem 'capybara', '~> 3.38'
   gem 'simplecov', '~> 0.22.0'
+end
+
+group :production do
+  gem 'aws-sdk-s3', '~> 1.120'
 end

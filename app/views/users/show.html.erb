@@ -1,0 +1,10 @@
+<div class="max-w-4xl flex items-center h-auto flex-wrap mx-auto my-32">
+	<div id="profile" class="w-full rounded-lg shadow-2xl bg-white mx-6">
+		<% if @user == current_user %>
+			<%= render 'my_profile' %>
+		<% else %>
+			<%= render 'others_profile' %>
+		<% end %>
+		</div>
+	</div>
+</div>

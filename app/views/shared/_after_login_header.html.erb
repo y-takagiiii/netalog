@@ -15,20 +15,24 @@
           <div class="dropdown dropdown-hover dropdown-bottom dropdown-end mr-2">
             <%= link_to search_path do %>
               <i class="fa-solid fa-marker fa-xl"></i>
+              <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-24">
+                <li>ログを作成</li>
+              </ul>
             <% end %>
-            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-              <li>ログを作成</li>
-            </ul>
           </div>
           <div class="dropdown dropdown-hover dropdown-end">
             <label tabindex="0" class="btn m-1 btn-ghost btn-circle avatar">
               <div class="w-10 rounded-full">
-                <%= image_tag 'netalog.png' %>
+                <% if current_user.profile_image.attached? %>
+                  <%= image_tag current_user.profile_image %>
+                <% else %>
+                  <%= image_tag 'netalog.png' %>
+                <% end %>
               </div>
             </label>
             <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
               <li>
-                <%= link_to '#' do %>
+                <%= link_to user_path(current_user) do %>
                   <i class="fa-regular fa-address-card"></i>マイページ
                 <% end %>
               </li>

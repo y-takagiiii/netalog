@@ -1,0 +1,52 @@
+<div class="p-4 text-center">
+  <% if @user.profile_image.attached? %>
+    <%= image_tag @user.profile_image, class: "block rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center" %>
+  <% else %>
+    <%= image_tag 'netalog.png', class: "block rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center" %>
+  <% end %>
+<h1 class="text-3xl font-bold pt-8">
+  <%= @user.name %>
+</h1>
+<div class="divider mx-auto w-4/5 pt-3"></div>
+<h1 class="text-3xl font-bold pt-8">
+  投稿一覧
+  </h1>
+  <% if @posts.present? %>
+    <% @posts.each do |post| %>
+      <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1.5">
+        <div class="flex justify-between">
+          <p class="ml-1">投稿者 <%= post.user.name %></p>
+          <p class="mr-1"><%= post.count_button_pressed_times %>笑い</p>
+        </div>
+        <figure>
+          <%= link_to image_tag(post.video.thumbnail, class: "w-fit"), post_path(post), data: { turbo: false } %>
+        </figure>
+        <div class="card-body h-56 justify-between">
+          <h2 class="card-title text-base">
+            <%= post.video.title.truncate(40) %>
+            <% if post.new? %>
+              <div class="badge badge-secondary">NEW</div>
+            <% end %>
+          </h2>
+          <div>
+            <div class="card-actions justify-around mt-2">
+              <%= render 'shared/like_button', post: post %>
+              <div class="mt-1">
+                <div class="dropdown dropdown-top dropdown-end">
+                  <label tabindex="0">
+                    <i class="fa-solid fa-list fa-xl"></i>
+                  </label>
+                  <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                    <li>
+                      <a href="#">プレイリスト1に追加</a>
+                      <a href="#">プレイリスト2に追加</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>

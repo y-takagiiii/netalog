@@ -2,7 +2,7 @@
     <% @posts.each do |post| %>
       <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1.5">
         <div class="flex justify-between">
-          <p class="ml-1">投稿者 <%= post.user.name %></p>
+          <p class="ml-1">投稿者 <%= link_to post.user.name, user_path(post.user) %></p>
           <p class="mr-1"><%= post.count_button_pressed_times %>笑い</p>
         </div>
         <figure>
@@ -16,12 +16,17 @@
             <% end %>
           </h2>
           <div>
-            <div class="card-actions justify-end">
+            <%# <div class="card-actions justify-end">
               <div class="badge badge-outline">タグ1</div>
               <div class="badge badge-outline">タグ２</div>
-            </div>
+            </div> %>
             <% if current_user.own?(post) %>
               <div class="card-actions mt-2 justify-around">
+                <div>
+                  <%= link_to "https://twitter.com/share?text=「#{post.video.title}」のログを作成しました！%0a%20%23ネタログ%20#{post.decorate.with_hash_tags}%0a&url=#{ request.url }", target: '_blank' do %>
+                    <i class="fab fa-twitter"></i> 共有
+                  <% end %>
+                </div>
                 <%= render 'shared/own_post_menus', post: post %>
               </div>
             <% else %>
