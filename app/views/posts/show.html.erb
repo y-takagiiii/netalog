@@ -1,7 +1,7 @@
 <div class="container mx-auto my-3">
   <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1">
     <div class="flex justify-between">
-      <p class="ml-1">投稿者 <%= @post.user.name %></p>
+      <p class="ml-1">投稿者 <%= link_to @post.user.name, user_path(@post.user) %></p>
       <p class="mr-1"><%= @post.count_button_pressed_times %>笑い</p>
     </div>
     <figure class="flex justify-between" >
@@ -46,7 +46,7 @@
         </div>
         <div class="mt-1.5">
           <div class="dropdown dropdown-hover dropdown-top dropdown-end">
-            <%= link_to  new_laugh_log_path(@post.video_id, post_id: @post.id ), data: { turbo: false } do %>
+            <%= link_to new_laugh_log_path(@post.video_id, post_id: @post.id ), data: { turbo: false } do %>
               <i class="fa-solid fa-marker fa-xl"></i>
               <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-48">
                 <li>この動画でログを作る</li>
