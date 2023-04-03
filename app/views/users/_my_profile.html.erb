@@ -1,0 +1,59 @@
+<div class="p-4 text-center">
+  <% if @user.profile_image.attached? %>
+    <%= image_tag @user.profile_image, class: "block rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center" %>
+  <% else %>
+    <%= image_tag 'netalog.png', class: "block rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center" %>
+  <% end %>
+  <h1 class="text-3xl font-bold pt-8">
+    <%= @user.name %>
+  </h1>
+  <div class="divider mx-auto w-4/5 pt-3"></div>
+  <p class="pt-4 text-base flex items-center justify-center">
+    <i class="fa-solid fa-envelope h-4 pr-4"></i><%= @user.email %>
+  </p>
+  <%# <p class="pt-2 text-gray-600 text-base flex items-center justify-center">
+  <i class="fa-brands fa-youtube h-4 pr-4"></i>
+  好きなジャンル
+  </p>
+  <p class="pt-8 text-sm">
+  自己紹介
+  </p> %>
+
+  <div class="pt-12 pb-8">
+    <%= link_to '編集', edit_user_path(@user), class: 'btn' %>
+  </div>
+  <div class="divider mx-auto w-4/5 pt-3"></div>
+  <h1 class="text-3xl font-bold pt-8">
+  投稿一覧
+  </h1>
+  <% if @posts.present? %>
+    <% @posts.each do |post| %>
+      <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1.5">
+        <div class="flex justify-between">
+          <p class="ml-1">投稿者 <%= post.user.name %></p>
+          <p class="mr-1"><%= post.count_button_pressed_times %>笑い</p>
+        </div>
+        <figure>
+          <%= link_to image_tag(post.video.thumbnail, class: "w-fit"), post_path(post), data: { turbo: false } %>
+        </figure>
+        <div class="card-body h-56 justify-between">
+          <h2 class="card-title text-base">
+            <%= post.video.title.truncate(40) %>
+            <% if post.new? %>
+              <div class="badge badge-secondary">NEW</div>
+            <% end %>
+          </h2>
+          <div>
+            <div class="card-actions mt-2 justify-around">
+              <div>
+                <%= link_to "https://twitter.com/share?text=「#{post.video.title}」のログを作成しました！%0a%20%23ネタログ%20#{post.decorate.with_hash_tags}%0a&url=#{ request.url }", target: '_blank' do %>
+                  <i class="fab fa-twitter"></i> 共有
+                <% end %>
+              </div>
+              <%= render 'shared/own_post_menus', post: post %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
