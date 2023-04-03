@@ -2,7 +2,7 @@
     <% @posts.each do |post| %>
       <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1.5">
         <div class="flex justify-between">
-          <p class="ml-1">投稿者 <%= post.user.name %></p>
+          <p class="ml-1">投稿者 <%= link_to post.user.name, user_path(post.user) %></p>
           <p class="mr-1"><%= post.count_button_pressed_times %>笑い</p>
         </div>
         <figure>
