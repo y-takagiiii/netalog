@@ -11,21 +11,10 @@
         <% @notifications.each do |notice| %>
           <tr class="hover" data-href>
             <th><%= l notice.updated_at, format: :short %></th>
-            <td><%= notice.title %></td>
+            <td><%= link_to notice.title, notification_path(notice) %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
 </div>
-
-<script>
-  const tr = document.querySelectorAll('tr[data-href]')
-  tr.forEach(function(el) {
-    el.onclick = function(e) {
-      const clickedElement = e.target
-      const href = clickedElement.dataset.href
-      location.href = "<%= notification_path(2) %>"
-    }
-  })
-</script>
