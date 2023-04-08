@@ -42,15 +42,15 @@
                 <% end %>
               </li>
               <li>
-                <a href="#">
+                <%= link_to notifications_path do %>
                   <i class="fa-regular fa-bell mr-1"></i>お知らせ
-                </a>
-                <%#= link_to notifications_path do %>
-                  <%# if @notification.updated_at > Time.current.weeks_ago(1) %>
-                  <%# <i class="fa-regular fa-bell mr-1"></i>お知らせ %>
-                    <%# <span class="badge">New</span> %>
-                  <%# end %>
-                <%# end %>
+                <% end %>
+                <%= link_to notifications_path do %>
+                  <% if @latest_notification.updated_at > Time.current.weeks_ago(1) %>
+                  <i class="fa-regular fa-bell mr-1"></i>お知らせ
+                    <span class="badge">New</span>
+                  <% end %>
+                <% end %>
               </li>
             </ul>
           </div>
