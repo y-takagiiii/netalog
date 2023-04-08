@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   private
 
   def set_notification
-    @notification = AdminNotification.last
+    @latest_notification = AdminNotification.last
   end
 end
