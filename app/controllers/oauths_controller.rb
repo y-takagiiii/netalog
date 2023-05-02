@@ -1,4 +1,4 @@
-class GoogleLoginsController < ApplicationController
+class OauthsController < ApplicationController
   skip_before_action :require_login
 
   def oauth
@@ -6,6 +6,7 @@ class GoogleLoginsController < ApplicationController
   end
 
   def callback
+    binding.b
     provider = auth_params[:provider]
     if auth_params[:denied].present? || auth_params[:error] == 'ACCESS_DENIED'
       redirect_to login_path, warning: 'ログインをキャンセルしました'
