@@ -31,7 +31,7 @@
       <% else %>
       <div class="card-actions justify-around mt-2">
         <div class="mt-1"><%= render 'shared/like_button', post: @post %></div>
-        <div class="mt-2">
+        <%# <div class="mt-2">
           <div class="dropdown dropdown-top dropdown-end">
             <label tabindex="0">
               <i class="fa-solid fa-list fa-xl"></i>
@@ -43,7 +43,7 @@
               </li>
             </ul>
           </div>
-        </div>
+        </div> %>
         <div class="mt-1.5">
           <div class="dropdown dropdown-hover dropdown-top dropdown-end">
             <%= link_to new_laugh_log_path(@post.video_id, post_id: @post.id ), data: { turbo: false } do %>

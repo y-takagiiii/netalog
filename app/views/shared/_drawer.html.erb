@@ -13,7 +13,7 @@
           <i class="fa-regular fa-thumbs-up fa-xl"></i>いいねした投稿
         <% end %>
       </li>
-      <li>
+      <%# <li>
         <div>
           <i class="fa-solid fa-list"></i>
           <div class="dropdown dropdown-hover">
@@ -24,7 +24,7 @@
             </ul>
           </div>
         </div>
-      </li>
+      </li> %>
       <div class="divider"></div>
       <li>
         <%= link_to popular_posts_path do %>
@@ -32,14 +32,14 @@
         <% end %>
       </li>
       <div class="divider"></div>
-      <li><a href="#"><i class="fa-regular fa-circle-question"></i>ヘルプ</a></li>
+      <%# <li><a href="#"><i class="fa-regular fa-circle-question"></i>ヘルプ</a></li> %>
       <li>
         <%= link_to "https://forms.gle/KGjZ4MLtyrNMhoNV8", target: :_blank, rel: "noopener noreferrer" do %>
           <i class="fa fa-regular fa-envelope"></i>フィードバックを送る
         <% end %>
       </li>
       <div class="divider"></div>
-      <li><%= link_to 'ネタログについて', '#' %></li>
+      <%# <li>= link_to 'ネタログについて', '#'</li> %>
       <li><%= link_to 'プライバシーポリシー', privacy_policy_path %></li>
       <li><%= link_to '利用規約', terms_of_use_path %></li>
       <li><%= link_to 'お問い合わせ', '#' %></li>
